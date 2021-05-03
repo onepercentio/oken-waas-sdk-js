@@ -30,7 +30,7 @@ const userId = Date.now().toString()
 				data: 'test script'
 			})
 
-			console.log("🚀 ~ file: test.js ~ line 107 ~ waas.wallet.create ~ mint", mint.data)
+			console.log("🚀 ~ file: test.js ~ line 107 ~ waas.wallet.create ~ mint", mint)
 
 			const balance = await contract.balanceOf({
 				account: '0xb9f4b9a007dea047caf882d201d4d950050c21aa',
