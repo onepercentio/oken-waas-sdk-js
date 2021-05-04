@@ -3,19 +3,19 @@ This is a programmable interface to the Oken Wallet as a Service API. Oken is a 
 
 TL;DR: Here's an example code
 
-  const WaaS = require('oken-waas')
+    const WaaS = require('oken-waas')
 
-  const privateKey = 'YOUR_PRIVATE_KEY'
-  const okenClientId = 'YOUR_CLIENT_ID'
+    const privateKey = 'YOUR_PRIVATE_KEY'
+    const okenClientId = 'YOUR_CLIENT_ID'
 
-  const { contracts, wallets } = WaaS.connect({
-    network: WaaS.networks.DEVELOPMENT,
-    okenClientId,
-    privateKey
-  })
+    const { contracts, wallets } = WaaS.connect({
+      network: WaaS.networks.DEVELOPMENT,
+      okenClientId,
+      privateKey
+    })
 
-  const contract = contracts.nft()
-  const userId = Date.now().toString()
+    const contract = contracts.nft()
+    const userId = Date.now().toString()
 
     ; (async () => {
       try {
@@ -28,8 +28,7 @@ TL;DR: Here's an example code
       } catch (error) {
         console.error(error?.response?.data ?? error)
       }
-    }
-  })()
+    })()
 
 In order to use this SDK you need to have an Client ID. If you don't have one yet, please [contact us](http://onepercent.io).
 
@@ -49,11 +48,11 @@ This is the reason why you need a key pair (private on customer side, public on 
 
 To add Oken WaaS to your JS project, you could run the following command on the command line:
 
-  npm install oken-waas --save
+    npm install oken-waas --save
 
 If you are running Yarn, please do as follows:
 
-  yarn add oken-waas --save
+    yarn add oken-waas --save
 
 Now you are able to instantiate WaaS in your code.
 
@@ -62,16 +61,16 @@ The first step to access the SDK is to instantiate the SDK with your own private
 
 An initalization example is presented ahead:
 
-  const WaaS = require('oken-waas')
+    const WaaS = require('oken-waas')
 
-  const privateKey = 'YOUR_PRIVATE_KEY'
-  const okenClientId = 'YOUR_CLIENT_ID'
+    const privateKey = 'YOUR_PRIVATE_KEY'
+    const okenClientId = 'YOUR_CLIENT_ID'
 
-  const { contracts, wallets } = WaaS.connect({
-    network: WaaS.networks.DEVELOPMENT,
-    okenClientId,
-    privateKey
-  })
+    const { contracts, wallets } = WaaS.connect({
+      network: WaaS.networks.DEVELOPMENT,
+      okenClientId,
+      privateKey
+    })
 
 As shown above, you could instantiate two elements: ``contracts`` and ``wallets``. Ahead we describe each of them.
 
@@ -84,14 +83,14 @@ After instantiating the WaaS SDK, you could perform wallet operations, as descri
 
 You could use the ``wallets`` component like this:
 
-  const referenceId = 'ABC123'
-  try {
-    const account = await wallets.create(referenceId)
-    const allAccounts = await wallets.get()
+    const referenceId = 'ABC123'
+    try {
+      const account = await wallets.create(referenceId)
+      const allAccounts = await wallets.get()
 
-  } catch (error) {
-    console.error(error?.response?.data ?? error)
-  }
+    } catch (error) {
+      console.error(error?.response?.data ?? error)
+    }
 
 ## Contracts
 You could instantiate a deployed contract and call its methods using the SDK. Your provided Client ID should have a linked contract deployed to the blockchain before using it. There are two types of contract currently supported by the SDK:
@@ -101,26 +100,26 @@ You could instantiate a deployed contract and call its methods using the SDK. Yo
 
 The SDK abstracts all existing contract methods, so you need to refer to the correspoding ERC documentation in order to have access to all existing methods. Ahead, we exemplify how you could call the methods ``mint`` (a POST request to the API, as it writes to the contract) and ``balanceOf`` (a GET request to the API, as it reads from the contract):
 
-  try {
-    const mint = await contract.mint({
-      to: '0xb9f4b9a007dea047caf882d201d4d950050c21aa',
-      id: 1,
-      amount: 1,
-      data: 'test script'
-    })
+    try {
+      const mint = await contract.mint({
+        to: '0xb9f4b9a007dea047caf882d201d4d950050c21aa',
+        id: 1,
+        amount: 1,
+        data: 'test script'
+      })
 
-    console.log("🚀 ~ file: test.js ~ line 107 ~ waas.wallet.create ~ mint", mint)
+      console.log("🚀 ~ file: test.js ~ line 107 ~ waas.wallet.create ~ mint", mint)
 
-    const balance = await contract.balanceOf({
-      account: '0xb9f4b9a007dea047caf882d201d4d950050c21aa',
-      id: 1
-    })
+      const balance = await contract.balanceOf({
+        account: '0xb9f4b9a007dea047caf882d201d4d950050c21aa',
+        id: 1
+      })
 
-    console.log("🚀 ~ file: test.js ~ line 114 ~ waas.wallet.create ~ balance", balance)
+      console.log("🚀 ~ file: test.js ~ line 114 ~ waas.wallet.create ~ balance", balance)
 
-  } catch (error) {
-    console.error(error?.response?.data ?? error)
-  }
+    } catch (error) {
+      console.error(error?.response?.data ?? error)
+    }
 
 ## Issues and support
 If you need any support on this SDK, please visit our [issues page on Github](https://github.com/onepercentio/oken-waas-sdk-js/issues) or contact our team.
