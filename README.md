@@ -72,6 +72,11 @@ An initalization example is presented ahead:
       privateKey
     })
 
+The parameter ``network`` should be one of the types:
+- WaaS.networks.DEVELOPMENT
+- WaaS.networks.STAGING
+- WaaS.networks.PRODUCTION
+
 As shown above, you could instantiate two elements: ``contracts`` and ``wallets``. Ahead we describe each of them.
 
 ## Wallets
