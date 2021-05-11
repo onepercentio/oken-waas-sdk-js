@@ -183,7 +183,7 @@ The SDK provides an element to wrap API errors. Ahead, we summarize the supporte
 
 You should surround your code with a ``try/catch`` block in order to collect any raised error. The basic usage could be as follows:
 
-...
+```
 const { contracts, wallets, errors } = WaaS.connect({ /* Your connection object */ })
 
 try {
@@ -195,7 +195,7 @@ try {
     if (error instanceof errors.UNAUTHORIZED) { // UNAUTHORIZED ERROR }
     if (error instanceof errors.SERVER_ERROR) { //SERVER_ERROR ERROR }
 }
-...
+```
 
 ## [](https://www.npmjs.com/package/oken-waas#issues-and-support)Issues and support
 
