@@ -9,7 +9,7 @@ module.exports = (endpoint, signer) => {
   return {
     post: async (route, payload = {}) => {
       try {
-        const { data } = await axios.post(
+        const { data } = await api.post(
           route,
           signer.signMsg(payload),
           {
@@ -26,7 +26,7 @@ module.exports = (endpoint, signer) => {
     },
     get: async (route, payload) => {
       try {
-        const { data } = await axios.get(
+        const { data } = await api.get(
           route,
           {
             params: payload,
