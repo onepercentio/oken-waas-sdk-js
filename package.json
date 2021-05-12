@@ -22,6 +22,8 @@
   "homepage": "https://github.com/onepercentio/oken-waas#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "axios-error": "^1.0.4",
+    "firebase-functions": "^3.13.2",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "moment": "^2.29.1"

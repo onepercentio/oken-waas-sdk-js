@@ -4,6 +4,7 @@ const endpoints = require('./src/config/endpoints')
 const networks = require('./src/config/networks')
 const okenSigner = require('./src/components/okenSigner')
 const API = require('./src/components/api')
+const errors = require('./src/components/errorHandler')
 
 module.exports = {
 	connect: ({ endpoint, network, address, okenClientId, privateKey }) => {
@@ -12,6 +13,7 @@ module.exports = {
 		return {
 			wallets: wallet(api),
 			contracts: contracts(api, network, address),
+			errors: errors
 		}
 	},
 	networks,
