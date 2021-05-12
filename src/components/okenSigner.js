@@ -1,5 +1,4 @@
 const crypto = require('crypto')
-const moment = require('moment')
 const jwt = require('jsonwebtoken')
 
 const okenSigner = (okenClientId, privateKey) => ({
@@ -7,7 +6,7 @@ const okenSigner = (okenClientId, privateKey) => ({
   signMsg: payload => {
     const payloadWithTimestamp = {
       ...payload,
-      timestamp: moment().toISOString()
+      timestamp: new Date().toISOString()
     }
 
     const msg = JSON.stringify(payloadWithTimestamp)
