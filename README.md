@@ -11,7 +11,8 @@ const privateKey = 'YOUR_PRIVATE_KEY'
 const okenClientId = 'YOUR_CLIENT_ID'
 
 const { contracts, wallets, errors } = WaaS.connect({
-	network: WaaS.networks.DEVELOPMENT,
+	network: WaaS.networks.ETHEREUM.KOVAN,
+        endpoint: WaaS.endpoints.STAGING,
 	okenClientId,
 	privateKey
 })
@@ -102,7 +103,8 @@ const privateKey = 'YOUR_PRIVATE_KEY'
 const okenClientId = 'YOUR_CLIENT_ID'
 
 const { contracts, wallets } = WaaS.connect({
-  network: WaaS.networks.DEVELOPMENT,
+  network: WaaS.networks.ETHEREUM.KOVAN,
+  endpoint: WaaS.endpoints.STAGING,
   okenClientId,
   privateKey
 })
@@ -111,9 +113,17 @@ const { contracts, wallets } = WaaS.connect({
 
 The parameter  `network`  should be one of the types:
 
--   WaaS.networks.DEVELOPMENT
--   WaaS.networks.STAGING
--   WaaS.networks.PRODUCTION
+-   WaaS.endpoints.DEVELOPMENT
+-   WaaS.endpoints.STAGING
+-   WaaS.endpoints.PRODUCTION
+
+The parameter  `endpoint`  should be one of the types:
+
+-   WaaS.networks.ETHEREUM.KOVAN
+-   WaaS.networks.ETHEREUM.ROPSTEN
+-   WaaS.networks.ETHEREUM.MAINNET
+-   WaaS.networks.CELO.ALFAJORES
+-   WaaS.networks.CELO.FORNO
 
 As shown above, you could instantiate two elements:  `contracts`  and  `wallets`. Ahead we describe each of them.
 
