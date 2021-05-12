@@ -1,4 +1,3 @@
-
 # Oken Wallet as a Service (WaaS) Javascript SDK
 
 This is a programmable interface to the Oken Wallet as a Service API. Oken is a  [tokenization platform](http://oken.app/)  crated by OnePercet to help customers to create and manage tokens on blockchain.

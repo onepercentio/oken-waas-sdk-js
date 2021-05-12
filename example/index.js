@@ -6,7 +6,7 @@ const privateKey = fs.readFileSync(path.join(__dirname, 'private.key'), 'utf-8')
 const okenClientId = fs.readFileSync(path.join(__dirname, 'okenClientId.key'), 'utf-8')
 
 const { contracts, wallets, errors } = WaaS.connect({
-	network: WaaS.networks.DEVELOPMENT,
+	network: WaaS.networks.CELO.ALFAJORES,
 	okenClientId,
 	privateKey
 })
@@ -17,7 +17,7 @@ const userId = Date.now().toString()
 ; (async () => {
 
 	try {
-		// await wallets.create('abc123')
+		await wallets.create('abc123')
 		const allAccounts = await wallets.get()
 		// const userAccount = await waas.wallet.get(userId)
 
