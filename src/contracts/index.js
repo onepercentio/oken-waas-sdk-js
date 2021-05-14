@@ -1,9 +1,12 @@
 const fs = require('fs')
+const { add } = require('lodash')
 const _ = require('lodash')
 
 const abiMap = {
   'nft': 'WithdrawableControlledNFTFactory',
-  'nft-control': 'ControlledNFTFactory'
+  'controlled-token': 'ControlledNFTFactory',
+  'TropixRouter': 'TropixRouter',
+  'TropixWalletETH': 'TropixWalletETH'
 }
 
 const typesAndMutability = v => ({ type: v.type, mutability: v.stateMutability })
@@ -27,7 +30,9 @@ const contract = (contractId, api, network, address) => {
     .value()
 }
 
-module.exports = (api, network, address) => ({
-  nft: () => contract('nft', api, network, address),
-  // erc20: contract('erc20')
+module.exports = (api, network) => ({
+  nft: ({ address }) => contract('nft', api, network, address),
+  controlledToken: ({ address }) => contract('controlled-token', api, network, address),
+  tropixRouter: ({ address }) => contract('TropixRouter', api, network, address),
+  tropixWalletETH: ({ address }) => contract('TropixWalletETH', api, network, address),
 })
