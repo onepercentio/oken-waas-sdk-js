@@ -1,12 +1,11 @@
 const fs = require('fs')
-const { add } = require('lodash')
 const _ = require('lodash')
 
 const abiMap = {
-  'nft': 'WithdrawableControlledNFTFactory',
-  'controlled-token': 'ControlledNFTFactory',
-  'TropixRouter': 'TropixRouter',
-  'TropixWalletETH': 'TropixWalletETH'
+  'nft': 'OkenNFT',
+  'controlledToken': 'ControlledToken',
+  'tropixRouter': 'TropixRouter',
+  'tropixWalletETH': 'TropixWalletETH'
 }
 
 const typesAndMutability = v => ({ type: v.type, mutability: v.stateMutability })
@@ -18,7 +17,7 @@ const buildApiUrls = (contractBaseUrl, api) => (v, method) => v.mutability === '
   : (payload) => api.post(`${contractBaseUrl}/${method}`, { params: payload })
 
 const contract = (contractId, api, network, address) => {
-  const { abi } = JSON.parse(fs.readFileSync(`src/abis/${abiMap[contractId]}.json`))
+  const abi = JSON.parse(fs.readFileSync(`src/abis/${abiMap[contractId]}.json`))
 
   const contractApiServices = buildApiUrls(`/${network}/${contractId}/${address}`, api)
 
@@ -32,7 +31,7 @@ const contract = (contractId, api, network, address) => {
 
 module.exports = (api, network) => ({
   nft: ({ address }) => contract('nft', api, network, address),
-  controlledToken: ({ address }) => contract('controlled-token', api, network, address),
-  tropixRouter: ({ address }) => contract('TropixRouter', api, network, address),
-  tropixWalletETH: ({ address }) => contract('TropixWalletETH', api, network, address),
+  controlledToken: ({ address }) => contract('controlledToken', api, network, address),
+  tropixRouter: ({ address }) => contract('tropixRouter', api, network, address),
+  tropixWalletETH: ({ address }) => contract('tropixWalletETH', api, network, address),
 })
