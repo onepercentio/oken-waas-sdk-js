@@ -2,8 +2,8 @@ const fs = require('fs')
 const path = require('path')
 const WaaS = require('../index.js')
 
-const privateKey = fs.readFileSync(path.join(__dirname, 'private.key'), 'utf-8')
-const okenClientId = fs.readFileSync(path.join(__dirname, 'okenClientId.key'), 'utf-8')
+const privateKey = fs.readFileSync(path.resolve(__dirname, 'private.key'), 'utf-8')
+const okenClientId = fs.readFileSync(path.resolve(__dirname, 'okenClientId.key'), 'utf-8')
 
 const { contracts, wallets, transactions, errors } = WaaS.connect({
   network: WaaS.networks.ETHEREUM.KOVAN,
@@ -17,7 +17,7 @@ const contract = contracts.nft({
 })
 const userId = Date.now().toString();
 
-; (async () => {
+(async () => {
 
   try {
     // await wallets.create(userId)

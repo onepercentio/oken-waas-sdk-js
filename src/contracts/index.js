@@ -1,6 +1,7 @@
 const fs = require('fs')
 const { add } = require('lodash')
 const _ = require('lodash')
+const path = require('path')
 
 const abiMap = {
   'nft': 'WithdrawableControlledNFTFactory',
@@ -18,8 +19,11 @@ const buildApiUrls = (contractBaseUrl, api) => (v, method) => v.mutability === '
   : (payload) => api.post(`${contractBaseUrl}/${method}`, { params: payload })
 
 const contract = (contractId, api, network, address) => {
-  const { abi } = JSON.parse(fs.readFileSync(`src/abis/${abiMap[contractId]}.json`))
 
+  const pathContractFile = path.resolve(__dirname, '..', `abis/${abiMap[contractId]}.json`)
+  const contractFile = fs.readFileSync(pathContractFile)
+  const { abi } = JSON.parse(contractFile)
+  
   const contractApiServices = buildApiUrls(`/${network}/${contractId}/${address}`, api)
 
   return _(abi)
@@ -29,6 +33,7 @@ const contract = (contractId, api, network, address) => {
     .mapValues(contractApiServices)
     .value()
 }
+  
 
 module.exports = (api, network) => ({
   nft: ({ address }) => contract('nft', api, network, address),
