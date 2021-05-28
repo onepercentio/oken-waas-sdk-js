@@ -17,7 +17,9 @@ const { contracts, wallets, errors } = WaaS.connect({
 	privateKey
 })
 
-const contract = contracts.nft()
+const contract = contracts.nft({
+  address: '0x0...'
+})
 const userId = Date.now().toString()
 
 ; (async () => {
@@ -125,7 +127,7 @@ The parameter  `endpoint`  should be one of the types:
 -   WaaS.networks.CELO.ALFAJORES
 -   WaaS.networks.CELO.FORNO
 
-As shown above, you could instantiate two elements:  `contracts`  and  `wallets`. Ahead we describe each of them.
+As shown above, you could instantiate three elements:  `contracts`,  `wallets` and `transactions`. Ahead we describe each of them.
 
 ## [](https://www.npmjs.com/package/oken-waas#wallets)Wallets
 
@@ -153,8 +155,8 @@ try {
 
 You could instantiate a deployed contract and call its methods using the SDK. Your provided Client ID should have a linked contract deployed to the blockchain before using it. There are two types of contract currently supported by the SDK:
 
--   `contracts.nft()`: a  [ERC-1155](https://eips.ethereum.org/EIPS/eip-1155)  Non-Fungible Token (NFT) contract
--   `constracts.erc20()`: a  [ERC-20](https://eips.ethereum.org/EIPS/eip-20)  standard token contract
+-   `contracts.nft({ address: '0x0...' })`: an [ERC-1155](https://eips.ethereum.org/EIPS/eip-1155)  Non-Fungible Token (NFT) extended implementation
+-   `contracts.controlledToken()`: an [ERC-20](https://eips.ethereum.org/EIPS/eip-20) extended implementation to make it controllable
 
 The SDK abstracts all existing contract methods, so you need to refer to the correspoding ERC documentation in order to have access to all existing methods. Ahead, we exemplify how you could call the methods  `mint`  (a POST request to the API, as it writes to the contract) and  `balanceOf`  (a GET request to the API, as it reads from the contract):
 
