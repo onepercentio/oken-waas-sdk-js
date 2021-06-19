@@ -12,14 +12,14 @@ const typesAndMutability = v => ({ type: v.type, mutability: v.stateMutability }
 
 const typeFunctions = v => v.type === 'function'
 
-const buildApiUrls = (contractBaseUrl, api) => (v, method) => v.mutability === 'view'
-  ? (payload) => api.get(`${contractBaseUrl}/${method}`, payload)
-  : (payload) => api.post(`${contractBaseUrl}/${method}`, { params: payload })
+const buildApiUrls = (baseParams, api) => (v, method) => v.mutability === 'view'
+  ? (params) => api.get('/contracts/state', { ...baseParams, method, params })
+  : (payload) => api.post('/transactions', { ...baseParams, method, params: payload })
 
-const contract = (contractId, api, network, address) => {
+const contract = (contractId, api, network, contractAddress) => {
   const abi = JSON.parse(fs.readFileSync(`src/abis/${abiMap[contractId]}.json`))
 
-  const contractApiServices = buildApiUrls(`/${network}/${contractId}/${address}`, api)
+  const contractApiServices = buildApiUrls({ network, contractId, contractAddress }, api)
 
   return _(abi)
     .keyBy('name')
