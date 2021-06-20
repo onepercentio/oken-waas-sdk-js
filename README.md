@@ -137,10 +137,10 @@ Transactions may have the following status:
 - ``ENQUEUED``: Transaction was enqueued and is waiting to be sent 
 - ``SENDING``: Transaction is being sent to blockchain
 - ``SENT``: Transaction was successfully sent to blockchain
-- ``MINED``: Transactions was mined
+- ``MINED``: Transactions was mined. This status is final
 - ``AWAITING_RETRY``: There was a transient error while sending, will be retried
-- ``REVERTED``: There was an error in the execution of transaction (thrown by the smart contract)
-- ``ERROR``: There was a server or integration error while sending the transaction
+- ``REVERTED``: There was an error in the execution of transaction (thrown by the smart contract). This status is final
+- ``ERROR``: There was a server or integration error while sending the transaction. This status is final
 
 ## Error Treatment
 The SDK provides an element to wrap API errors. Ahead, we summarize the supported error types:
