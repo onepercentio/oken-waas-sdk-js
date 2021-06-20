@@ -7,7 +7,7 @@ const okenClientId = fs.readFileSync(path.join(__dirname, 'okenClientId.key'), '
 
 const { contracts, wallets, errors } = WaaS.connect({
   network: WaaS.networks.ETHEREUM.KOVAN,
-  endpoint: WaaS.endpoints.DEVELOPMENT,
+  endpoint: WaaS.endpoints.STAGING,
   okenClientId,
   privateKey,
 })

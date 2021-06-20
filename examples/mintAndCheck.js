@@ -9,7 +9,7 @@ const { networks, endpoints } = WaaS
 
 const { contracts, transactions, errors } = WaaS.connect({
   network: networks.ETHEREUM.KOVAN,
-  endpoint: endpoints.DEVELOPMENT,
+  endpoint: endpoints.STAGING,
   okenClientId,
   privateKey,
 })
