@@ -1,10 +1,10 @@
 {
   "name": "oken-waas",
-  "version": "1.1.0",
+  "version": "1.2.1",
   "description": "Oken Wallet as a Service SDK",
   "main": "index.js",
   "scripts": {
-    "test": "node test"
+    "test": "echo \"not implemented yet\""
   },
   "repository": {
     "type": "git",

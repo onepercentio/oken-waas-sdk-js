@@ -6,6 +6,6 @@ module.exports = {
   },
   CELO: {
     ALFAJORES: 'alfajores',
-    FORNO: 'forno'
+    FORNO: 'celo'
   }
 }
