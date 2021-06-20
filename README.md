@@ -132,7 +132,7 @@ try {
 
 Transactions may have the following status:
 
-- ``CREATED``: Transaction was created is awating to be enqueued
+- ``CREATED``: Transaction was created is wating to be enqueued
 - ``ENQUEUING``: Transaction is being enqueued
 - ``ENQUEUED``: Transaction was enqueued and is waiting to be sent 
 - ``SENDING``: Transaction is being sent to blockchain
