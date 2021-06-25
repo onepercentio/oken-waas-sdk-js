@@ -1,4 +1,5 @@
 const fs = require('fs')
+const path = require('path')
 const _ = require('lodash')
 
 const abiMap = {
@@ -17,7 +18,8 @@ const buildApiUrls = (baseParams, api) => (v, method) => v.mutability === 'view'
   : (payload) => api.post('/transactions', { ...baseParams, method, params: payload })
 
 const contract = (contractId, api, network, contractAddress) => {
-  const abi = JSON.parse(fs.readFileSync(`src/abis/${abiMap[contractId]}.json`))
+  const abiPath = path.join(__dirname, '..', `abis/${abiMap[contractId]}.json`)
+  const abi = JSON.parse(fs.readFileSync(abiPath))
 
   const contractApiServices = buildApiUrls({ network, contractId, contractAddress }, api)
 
