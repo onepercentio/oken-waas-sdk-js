@@ -8,16 +8,15 @@ const API = require('./src/components/api')
 const errors = require('./src/components/errorHandler')
 
 module.exports = {
-	connect: ({ endpoint, network, okenClientId, privateKey }) => {
-		const signer = okenSigner(okenClientId, privateKey)
-		const api = API(endpoint, signer)
-		return {
-			wallets: wallet(api),
-			contracts: contracts(api, network),
-			transactions: transactions(api),
-			errors: errors
-		}
-	},
-	networks,
-	endpoints
+  connect: ({ endpoint, network, okenClientId, privateKey, signer = okenSigner }) => {
+    const api = API(endpoint, signer(okenClientId, privateKey))
+    return {
+      wallets: wallet(api),
+      contracts: contracts(api, network),
+      transactions: transactions(api),
+      errors: errors
+    }
+  },
+  networks,
+  endpoints
 }
