@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/onepercentio/oken-waas.git"
+    "url": "git+https://github.com/onepercentio/oken-waas-sdk-js.git"
   },
   "keywords": [
     "oken",
@@ -17,9 +17,9 @@
   "author": "OnePercent",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/onepercentio/oken-waas/issues"
+    "url": "https://github.com/onepercentio/oken-waas-sdk-js/issues"
   },
-  "homepage": "https://github.com/onepercentio/oken-waas#readme",
+  "homepage": "https://github.com/onepercentio/oken-waas-sdk-js#readme",
   "dependencies": {
     "axios": "^0.21.1",
     "axios-error": "^1.0.4",
