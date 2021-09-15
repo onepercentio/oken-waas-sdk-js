@@ -8,7 +8,8 @@ const abiMap = {
   'tropixRouter': 'TropixRouter',
   'tropixWalletETH': 'TropixWalletETH',
   'RarumNFT': 'RarumNFT',
-  'lootbox': 'Lootbox'
+  'lootbox': 'Lootbox',
+  'CarbonChain': 'CarbonChain'
 }
 
 const typesAndMutability = v => ({ type: v.type, mutability: v.stateMutability })
@@ -40,4 +41,5 @@ module.exports = (api, network) => ({
   tropixRouter: ({ address }) => contract('tropixRouter', api, network, address),
   tropixWalletETH: ({ address }) => contract('tropixWalletETH', api, network, address),
   lootbox: ({ address }) => contract('lootbox', api, network, address),
+  carbonChain: ({ address }) => contract('CarbonChain', api, network, address),
 })
