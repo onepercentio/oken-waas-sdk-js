@@ -1,0 +1,27 @@
+ {
+  "typeName": "Permit",
+  "domainName": "https://rarum.io",
+  "domainVersion": "1",
+  "dataStructure": [
+    {
+      "name": "owner",
+      "type": "address"
+    },
+    {
+      "name": "operator",
+      "type": "address"
+    },
+    {
+      "name": "approved",
+      "type": "bool"
+    },
+    {
+      "name": "nonce",
+      "type": "bytes32"
+    },
+    {
+      "name": "deadline",
+      "type": "uint256"
+    }
+  ]
+}
