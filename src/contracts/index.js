@@ -8,6 +8,8 @@ const abiMap = {
   'tropixRouter': 'TropixRouter',
   'tropixWalletETH': 'TropixWalletETH',
   'RarumNFT': 'RarumNFT',
+  'RarumNFTAuction': 'RarumNFTAuction',
+  'RarumToken': 'RarumToken',
   'lootbox': 'Lootbox',
   'CarbonChain': 'CarbonChain',
   'ERC20Payout': 'ERC20Payout',
@@ -39,6 +41,8 @@ const contract = (contractId, api, network, contractAddress) => {
 module.exports = (api, network) => ({
   nft: ({ address }) => contract('nft', api, network, address),
   rarumNFT: ({ address }) => contract('RarumNFT', api, network, address),
+  rarumNFTAuction: ({ address }) => contract('RarumNFTAuction', api, network, address),
+  rarumToken: ({ address }) => contract('RarumToken', api, network, address),
   controlledToken: ({ address }) => contract('controlledToken', api, network, address),
   tropixRouter: ({ address }) => contract('tropixRouter', api, network, address),
   tropixWalletETH: ({ address }) => contract('tropixWalletETH', api, network, address),

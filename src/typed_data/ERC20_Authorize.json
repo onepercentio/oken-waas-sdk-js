@@ -1,0 +1,27 @@
+{
+  "typeName": "Authorize",
+  "domainName": "https://rarum.io",
+  "domainVersion": "1",
+  "dataStructure": [
+    {
+      "type": "address",
+      "name": "owner"
+    },
+    {
+      "type": "address",
+      "name": "spender"
+    },
+    {
+      "type": "uint256",
+      "name": "value"
+    },
+    {
+      "type": "bytes32",
+      "name": "nonce"
+    },
+    {
+      "type": "uint256",
+      "name": "deadline"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "typeName": "AuthorizedBid",
+  "domainName": "https://rarum.io",
+  "domainVersion": "1",
+  "dataStructure": [
+    {
+      "type": "uint256",
+      "name": "auctionId"
+    },
+    {
+      "type": "address",
+      "name": "erc20Token"
+    },
+    {
+      "type": "uint256",
+      "name": "tokenAmount"
+    },
+    {
+      "type": "address",
+      "name": "bidder"
+    },
+    {
+      "type": "bytes32",
+      "name": "nonce"
+    },
+    {
+      "type": "uint256",
+      "name": "deadline"
+    }
+  ]
+}

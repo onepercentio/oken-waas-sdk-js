@@ -1,0 +1,51 @@
+{
+  "typeName": "AuthorizedAuction",
+  "domainName": "https://rarum.io",
+  "domainVersion": "1",
+  "dataStructure": [
+    {
+      "name": "amount",
+      "type": "uint256"
+    },
+    {
+      "name": "tokenId",
+      "type": "uint256"
+    },
+    {
+      "name": "bidIncreasePercentage",
+      "type": "uint128"
+    },
+    {
+      "name": "minPrice",
+      "type": "uint256"
+    },
+    {
+      "name": "start",
+      "type": "uint256"
+    },
+    {
+      "name": "end",
+      "type": "uint256"
+    },
+    {
+      "name": "nftContractAddress",
+      "type": "address"
+    },
+    {
+      "name": "erc20Token",
+      "type": "address"
+    },
+    {
+      "name": "nftSeller",
+      "type": "address"
+    },
+    {
+      "name": "nonce",
+      "type": "bytes32"
+    },
+    {
+      "name": "deadline",
+      "type": "uint256"
+    }
+  ]
+}
