@@ -1,0 +1,1590 @@
+[
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "nft",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "authorized",
+        "type": "bool"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "fee",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "admin",
+        "type": "address"
+      }
+    ],
+    "name": "ContractAuthorizationChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "offerId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "buyer",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "price",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "units",
+        "type": "uint32"
+      }
+    ],
+    "name": "ItemBought",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "index",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint32",
+            "name": "supply",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "totalSold",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "maxUnitsPerPurchase",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "startTime",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "endTime",
+            "type": "uint32"
+          },
+          {
+            "internalType": "address",
+            "name": "owner",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataURI",
+            "type": "string"
+          },
+          {
+            "internalType": "bool",
+            "name": "active",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "fromTenant",
+            "type": "bool"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "price",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "beneficiary",
+                "type": "address"
+              },
+              {
+                "internalType": "contract IERC20Upgradeable",
+                "name": "paymentToken",
+                "type": "address"
+              }
+            ],
+            "internalType": "struct RarumSales.PaymentOptions",
+            "name": "paymentOptions",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "lootBoxOptionId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "contract IRarumNFT",
+                "name": "nft",
+                "type": "address"
+              },
+              {
+                "internalType": "contract ILootBox",
+                "name": "lootBox",
+                "type": "address"
+              },
+              {
+                "internalType": "enum RarumSales.DeliveryType",
+                "name": "deliveryType",
+                "type": "uint8"
+              }
+            ],
+            "internalType": "struct RarumSales.DeliveryOptions",
+            "name": "deliveryOptions",
+            "type": "tuple"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct RarumSales.Offer",
+        "name": "offer",
+        "type": "tuple"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "contract IRarumNFT",
+        "name": "nft",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "contract ILootBox",
+        "name": "lootbox",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      }
+    ],
+    "name": "OfferCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "offerId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "newState",
+        "type": "bool"
+      }
+    ],
+    "name": "OfferStateUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "offerId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "newPrice",
+        "type": "uint256"
+      }
+    ],
+    "name": "PriceUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "previousAdminRole",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "newAdminRole",
+        "type": "bytes32"
+      }
+    ],
+    "name": "RoleAdminChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      }
+    ],
+    "name": "RoleGranted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      }
+    ],
+    "name": "RoleRevoked",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "offerId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "newSupply",
+        "type": "uint256"
+      }
+    ],
+    "name": "SupplyUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "offerId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "startTime",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "endTime",
+        "type": "uint32"
+      }
+    ],
+    "name": "TimeUpdated",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "ADMIN_ROLE",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "DEFAULT_ADMIN_ROLE",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "MINTER_ROLE",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "OPERATOR_ROLE",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_nft",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_fee",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_metadataURI",
+        "type": "string"
+      },
+      {
+        "internalType": "bool",
+        "name": "_authorized",
+        "type": "bool"
+      }
+    ],
+    "name": "addCollection",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "authorizedCollections",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "fee",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "metadataURI",
+        "type": "string"
+      },
+      {
+        "internalType": "bool",
+        "name": "authorized",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_offerId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint32",
+        "name": "_amount",
+        "type": "uint32"
+      }
+    ],
+    "name": "buy",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_nft",
+        "type": "address"
+      }
+    ],
+    "name": "collectionOfferCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint32",
+            "name": "supply",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "maxUnitsPerPurchase",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "startTime",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "endTime",
+            "type": "uint32"
+          },
+          {
+            "internalType": "address",
+            "name": "owner",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataURI",
+            "type": "string"
+          },
+          {
+            "internalType": "bool",
+            "name": "active",
+            "type": "bool"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "price",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "beneficiary",
+                "type": "address"
+              },
+              {
+                "internalType": "contract IERC20Upgradeable",
+                "name": "paymentToken",
+                "type": "address"
+              }
+            ],
+            "internalType": "struct RarumSales.PaymentOptions",
+            "name": "paymentOptions",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "lootBoxOptionId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "contract IRarumNFT",
+                "name": "nft",
+                "type": "address"
+              },
+              {
+                "internalType": "contract ILootBox",
+                "name": "lootBox",
+                "type": "address"
+              },
+              {
+                "internalType": "enum RarumSales.DeliveryType",
+                "name": "deliveryType",
+                "type": "uint8"
+              }
+            ],
+            "internalType": "struct RarumSales.DeliveryOptions",
+            "name": "deliveryOptions",
+            "type": "tuple"
+          }
+        ],
+        "internalType": "struct RarumSales.OfferRequest",
+        "name": "_offer",
+        "type": "tuple"
+      }
+    ],
+    "name": "createAuthorizedOffer",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint32",
+            "name": "supply",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "maxUnitsPerPurchase",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "startTime",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "endTime",
+            "type": "uint32"
+          },
+          {
+            "internalType": "address",
+            "name": "owner",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataURI",
+            "type": "string"
+          },
+          {
+            "internalType": "bool",
+            "name": "active",
+            "type": "bool"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "price",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "beneficiary",
+                "type": "address"
+              },
+              {
+                "internalType": "contract IERC20Upgradeable",
+                "name": "paymentToken",
+                "type": "address"
+              }
+            ],
+            "internalType": "struct RarumSales.PaymentOptions",
+            "name": "paymentOptions",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "lootBoxOptionId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "contract IRarumNFT",
+                "name": "nft",
+                "type": "address"
+              },
+              {
+                "internalType": "contract ILootBox",
+                "name": "lootBox",
+                "type": "address"
+              },
+              {
+                "internalType": "enum RarumSales.DeliveryType",
+                "name": "deliveryType",
+                "type": "uint8"
+              }
+            ],
+            "internalType": "struct RarumSales.DeliveryOptions",
+            "name": "deliveryOptions",
+            "type": "tuple"
+          }
+        ],
+        "internalType": "struct RarumSales.OfferRequest",
+        "name": "_offer",
+        "type": "tuple"
+      }
+    ],
+    "name": "createOffer",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "feeAddress",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getRoleAdmin",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "uint256",
+        "name": "index",
+        "type": "uint256"
+      }
+    ],
+    "name": "getRoleMember",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getRoleMemberCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "grantRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "hasRole",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_operator",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_feeAddress",
+        "type": "address"
+      }
+    ],
+    "name": "initialize",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_to",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_offerId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint32",
+        "name": "_amount",
+        "type": "uint32"
+      }
+    ],
+    "name": "offchainBuy",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "offers",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint32",
+        "name": "supply",
+        "type": "uint32"
+      },
+      {
+        "internalType": "uint32",
+        "name": "totalSold",
+        "type": "uint32"
+      },
+      {
+        "internalType": "uint32",
+        "name": "maxUnitsPerPurchase",
+        "type": "uint32"
+      },
+      {
+        "internalType": "uint32",
+        "name": "startTime",
+        "type": "uint32"
+      },
+      {
+        "internalType": "uint32",
+        "name": "endTime",
+        "type": "uint32"
+      },
+      {
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "metadataURI",
+        "type": "string"
+      },
+      {
+        "internalType": "bool",
+        "name": "active",
+        "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "fromTenant",
+        "type": "bool"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "price",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "beneficiary",
+            "type": "address"
+          },
+          {
+            "internalType": "contract IERC20Upgradeable",
+            "name": "paymentToken",
+            "type": "address"
+          }
+        ],
+        "internalType": "struct RarumSales.PaymentOptions",
+        "name": "paymentOptions",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "lootBoxOptionId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "contract IRarumNFT",
+            "name": "nft",
+            "type": "address"
+          },
+          {
+            "internalType": "contract ILootBox",
+            "name": "lootBox",
+            "type": "address"
+          },
+          {
+            "internalType": "enum RarumSales.DeliveryType",
+            "name": "deliveryType",
+            "type": "uint8"
+          }
+        ],
+        "internalType": "struct RarumSales.DeliveryOptions",
+        "name": "deliveryOptions",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "offersByCollection",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint32",
+        "name": "supply",
+        "type": "uint32"
+      },
+      {
+        "internalType": "uint32",
+        "name": "totalSold",
+        "type": "uint32"
+      },
+      {
+        "internalType": "uint32",
+        "name": "maxUnitsPerPurchase",
+        "type": "uint32"
+      },
+      {
+        "internalType": "uint32",
+        "name": "startTime",
+        "type": "uint32"
+      },
+      {
+        "internalType": "uint32",
+        "name": "endTime",
+        "type": "uint32"
+      },
+      {
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "metadataURI",
+        "type": "string"
+      },
+      {
+        "internalType": "bool",
+        "name": "active",
+        "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "fromTenant",
+        "type": "bool"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "price",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "beneficiary",
+            "type": "address"
+          },
+          {
+            "internalType": "contract IERC20Upgradeable",
+            "name": "paymentToken",
+            "type": "address"
+          }
+        ],
+        "internalType": "struct RarumSales.PaymentOptions",
+        "name": "paymentOptions",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "lootBoxOptionId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "contract IRarumNFT",
+            "name": "nft",
+            "type": "address"
+          },
+          {
+            "internalType": "contract ILootBox",
+            "name": "lootBox",
+            "type": "address"
+          },
+          {
+            "internalType": "enum RarumSales.DeliveryType",
+            "name": "deliveryType",
+            "type": "uint8"
+          }
+        ],
+        "internalType": "struct RarumSales.DeliveryOptions",
+        "name": "deliveryOptions",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_nft",
+        "type": "address"
+      }
+    ],
+    "name": "offersInCollection",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint32",
+            "name": "supply",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "totalSold",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "maxUnitsPerPurchase",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "startTime",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "endTime",
+            "type": "uint32"
+          },
+          {
+            "internalType": "address",
+            "name": "owner",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataURI",
+            "type": "string"
+          },
+          {
+            "internalType": "bool",
+            "name": "active",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "fromTenant",
+            "type": "bool"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "price",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "beneficiary",
+                "type": "address"
+              },
+              {
+                "internalType": "contract IERC20Upgradeable",
+                "name": "paymentToken",
+                "type": "address"
+              }
+            ],
+            "internalType": "struct RarumSales.PaymentOptions",
+            "name": "paymentOptions",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "lootBoxOptionId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "contract IRarumNFT",
+                "name": "nft",
+                "type": "address"
+              },
+              {
+                "internalType": "contract ILootBox",
+                "name": "lootBox",
+                "type": "address"
+              },
+              {
+                "internalType": "enum RarumSales.DeliveryType",
+                "name": "deliveryType",
+                "type": "uint8"
+              }
+            ],
+            "internalType": "struct RarumSales.DeliveryOptions",
+            "name": "deliveryOptions",
+            "type": "tuple"
+          }
+        ],
+        "internalType": "struct RarumSales.Offer[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_owner",
+        "type": "address"
+      }
+    ],
+    "name": "offersOf",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint32",
+            "name": "supply",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "totalSold",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "maxUnitsPerPurchase",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "startTime",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "endTime",
+            "type": "uint32"
+          },
+          {
+            "internalType": "address",
+            "name": "owner",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataURI",
+            "type": "string"
+          },
+          {
+            "internalType": "bool",
+            "name": "active",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "fromTenant",
+            "type": "bool"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "price",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "beneficiary",
+                "type": "address"
+              },
+              {
+                "internalType": "contract IERC20Upgradeable",
+                "name": "paymentToken",
+                "type": "address"
+              }
+            ],
+            "internalType": "struct RarumSales.PaymentOptions",
+            "name": "paymentOptions",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "lootBoxOptionId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "contract IRarumNFT",
+                "name": "nft",
+                "type": "address"
+              },
+              {
+                "internalType": "contract ILootBox",
+                "name": "lootBox",
+                "type": "address"
+              },
+              {
+                "internalType": "enum RarumSales.DeliveryType",
+                "name": "deliveryType",
+                "type": "uint8"
+              }
+            ],
+            "internalType": "struct RarumSales.DeliveryOptions",
+            "name": "deliveryOptions",
+            "type": "tuple"
+          }
+        ],
+        "internalType": "struct RarumSales.Offer[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_owner",
+        "type": "address"
+      }
+    ],
+    "name": "ownerOfferCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "renounceRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "revokeRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_offerId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "_newState",
+        "type": "bool"
+      }
+    ],
+    "name": "setOfferActive",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes4",
+        "name": "interfaceId",
+        "type": "bytes4"
+      }
+    ],
+    "name": "supportsInterface",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_offerId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_newPrice",
+        "type": "uint256"
+      }
+    ],
+    "name": "updatePrice",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_offerId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint32",
+        "name": "_newSupply",
+        "type": "uint32"
+      }
+    ],
+    "name": "updateSupply",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_offerId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint32",
+        "name": "_startTime",
+        "type": "uint32"
+      },
+      {
+        "internalType": "uint32",
+        "name": "_endTime",
+        "type": "uint32"
+      }
+    ],
+    "name": "updateTime",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
