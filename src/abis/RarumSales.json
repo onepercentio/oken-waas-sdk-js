@@ -3,6 +3,44 @@
     "anonymous": false,
     "inputs": [
       {
+        "indexed": true,
+        "internalType": "address",
+        "name": "authorizer",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "nonce",
+        "type": "bytes32"
+      }
+    ],
+    "name": "AuthorizationUsed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "nft",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "newState",
+        "type": "bool"
+      }
+    ],
+    "name": "CollectionStatusChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
         "indexed": false,
         "internalType": "address",
         "name": "nft",
@@ -135,6 +173,11 @@
             "type": "bool"
           },
           {
+            "internalType": "enum Models.OfferType",
+            "name": "offerType",
+            "type": "uint8"
+          },
+          {
             "components": [
               {
                 "internalType": "uint256",
@@ -152,7 +195,7 @@
                 "type": "address"
               }
             ],
-            "internalType": "struct RarumSales.PaymentOptions",
+            "internalType": "struct Models.PaymentOptions",
             "name": "paymentOptions",
             "type": "tuple"
           },
@@ -179,18 +222,18 @@
                 "type": "address"
               },
               {
-                "internalType": "enum RarumSales.DeliveryType",
+                "internalType": "enum Models.DeliveryType",
                 "name": "deliveryType",
                 "type": "uint8"
               }
             ],
-            "internalType": "struct RarumSales.DeliveryOptions",
+            "internalType": "struct Models.DeliveryOptions",
             "name": "deliveryOptions",
             "type": "tuple"
           }
         ],
         "indexed": false,
-        "internalType": "struct RarumSales.Offer",
+        "internalType": "struct Models.Offer",
         "name": "offer",
         "type": "tuple"
       },
@@ -232,7 +275,7 @@
         "type": "address"
       },
       {
-        "indexed": false,
+        "indexed": true,
         "internalType": "uint256",
         "name": "offerId",
         "type": "uint256"
@@ -251,13 +294,32 @@
     "anonymous": false,
     "inputs": [
       {
+        "indexed": true,
+        "internalType": "address",
+        "name": "paymentToken",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "newState",
+        "type": "bool"
+      }
+    ],
+    "name": "PaymentTokenStatusChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
         "indexed": false,
         "internalType": "address",
         "name": "owner",
         "type": "address"
       },
       {
-        "indexed": false,
+        "indexed": true,
         "internalType": "uint256",
         "name": "offerId",
         "type": "uint256"
@@ -351,13 +413,32 @@
     "anonymous": false,
     "inputs": [
       {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "offerId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "SoldOut",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
         "indexed": false,
         "internalType": "address",
         "name": "owner",
         "type": "address"
       },
       {
-        "indexed": false,
+        "indexed": true,
         "internalType": "uint256",
         "name": "offerId",
         "type": "uint256"
@@ -382,7 +463,7 @@
         "type": "address"
       },
       {
-        "indexed": false,
+        "indexed": true,
         "internalType": "uint256",
         "name": "offerId",
         "type": "uint256"
@@ -431,6 +512,19 @@
   },
   {
     "inputs": [],
+    "name": "DOMAIN_SEPARATOR",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "MINTER_ROLE",
     "outputs": [
       {
@@ -459,28 +553,43 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_nft",
+        "name": "",
         "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_fee",
-        "type": "uint256"
-      },
-      {
-        "internalType": "string",
-        "name": "_metadataURI",
-        "type": "string"
-      },
+      }
+    ],
+    "name": "allowedPaymentTokens",
+    "outputs": [
       {
         "internalType": "bool",
-        "name": "_authorized",
+        "name": "",
         "type": "bool"
       }
     ],
-    "name": "addCollection",
-    "outputs": [],
-    "stateMutability": "nonpayable",
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "authorizer",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "authorization",
+        "type": "bytes32"
+      }
+    ],
+    "name": "authorizationState",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -507,6 +616,11 @@
         "internalType": "bool",
         "name": "authorized",
         "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "created",
+        "type": "bool"
       }
     ],
     "stateMutability": "view",
@@ -522,6 +636,11 @@
       {
         "internalType": "uint256",
         "name": "_offerId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_maxPrice",
         "type": "uint256"
       },
       {
@@ -611,7 +730,7 @@
                 "type": "address"
               }
             ],
-            "internalType": "struct RarumSales.PaymentOptions",
+            "internalType": "struct Models.PaymentOptions",
             "name": "paymentOptions",
             "type": "tuple"
           },
@@ -638,17 +757,17 @@
                 "type": "address"
               },
               {
-                "internalType": "enum RarumSales.DeliveryType",
+                "internalType": "enum Models.DeliveryType",
                 "name": "deliveryType",
                 "type": "uint8"
               }
             ],
-            "internalType": "struct RarumSales.DeliveryOptions",
+            "internalType": "struct Models.DeliveryOptions",
             "name": "deliveryOptions",
             "type": "tuple"
           }
         ],
-        "internalType": "struct RarumSales.OfferRequest",
+        "internalType": "struct Models.OfferRequest",
         "name": "_offer",
         "type": "tuple"
       }
@@ -715,7 +834,7 @@
                 "type": "address"
               }
             ],
-            "internalType": "struct RarumSales.PaymentOptions",
+            "internalType": "struct Models.PaymentOptions",
             "name": "paymentOptions",
             "type": "tuple"
           },
@@ -742,22 +861,163 @@
                 "type": "address"
               },
               {
-                "internalType": "enum RarumSales.DeliveryType",
+                "internalType": "enum Models.DeliveryType",
                 "name": "deliveryType",
                 "type": "uint8"
               }
             ],
-            "internalType": "struct RarumSales.DeliveryOptions",
+            "internalType": "struct Models.DeliveryOptions",
             "name": "deliveryOptions",
             "type": "tuple"
           }
         ],
-        "internalType": "struct RarumSales.OfferRequest",
+        "internalType": "struct Models.OfferRequest",
         "name": "_offer",
         "type": "tuple"
       }
     ],
     "name": "createOffer",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint32",
+            "name": "supply",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "maxUnitsPerPurchase",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "startTime",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "endTime",
+            "type": "uint32"
+          },
+          {
+            "internalType": "address",
+            "name": "owner",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataURI",
+            "type": "string"
+          },
+          {
+            "internalType": "bool",
+            "name": "active",
+            "type": "bool"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "price",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "beneficiary",
+                "type": "address"
+              },
+              {
+                "internalType": "contract IERC20Upgradeable",
+                "name": "paymentToken",
+                "type": "address"
+              }
+            ],
+            "internalType": "struct Models.PaymentOptions",
+            "name": "paymentOptions",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "lootBoxOptionId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "contract IRarumNFT",
+                "name": "nft",
+                "type": "address"
+              },
+              {
+                "internalType": "contract ILootBox",
+                "name": "lootBox",
+                "type": "address"
+              },
+              {
+                "internalType": "enum Models.DeliveryType",
+                "name": "deliveryType",
+                "type": "uint8"
+              }
+            ],
+            "internalType": "struct Models.DeliveryOptions",
+            "name": "deliveryOptions",
+            "type": "tuple"
+          }
+        ],
+        "internalType": "struct Models.OfferRequest",
+        "name": "_offer",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "bytes32",
+            "name": "authorization",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "deadline",
+            "type": "uint32"
+          },
+          {
+            "internalType": "address",
+            "name": "signer",
+            "type": "address"
+          },
+          {
+            "internalType": "uint8",
+            "name": "v",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "r",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "s",
+            "type": "bytes32"
+          }
+        ],
+        "internalType": "struct Models.Authorization",
+        "name": "_authorization",
+        "type": "tuple"
+      }
+    ],
+    "name": "createSignedOffer",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -910,6 +1170,11 @@
         "type": "uint256"
       },
       {
+        "internalType": "uint256",
+        "name": "_maxPrice",
+        "type": "uint256"
+      },
+      {
         "internalType": "uint32",
         "name": "_amount",
         "type": "uint32"
@@ -986,6 +1251,11 @@
         "type": "bool"
       },
       {
+        "internalType": "enum Models.OfferType",
+        "name": "offerType",
+        "type": "uint8"
+      },
+      {
         "components": [
           {
             "internalType": "uint256",
@@ -1003,7 +1273,7 @@
             "type": "address"
           }
         ],
-        "internalType": "struct RarumSales.PaymentOptions",
+        "internalType": "struct Models.PaymentOptions",
         "name": "paymentOptions",
         "type": "tuple"
       },
@@ -1030,12 +1300,12 @@
             "type": "address"
           },
           {
-            "internalType": "enum RarumSales.DeliveryType",
+            "internalType": "enum Models.DeliveryType",
             "name": "deliveryType",
             "type": "uint8"
           }
         ],
-        "internalType": "struct RarumSales.DeliveryOptions",
+        "internalType": "struct Models.DeliveryOptions",
         "name": "deliveryOptions",
         "type": "tuple"
       }
@@ -1109,6 +1379,11 @@
         "type": "bool"
       },
       {
+        "internalType": "enum Models.OfferType",
+        "name": "offerType",
+        "type": "uint8"
+      },
+      {
         "components": [
           {
             "internalType": "uint256",
@@ -1126,7 +1401,7 @@
             "type": "address"
           }
         ],
-        "internalType": "struct RarumSales.PaymentOptions",
+        "internalType": "struct Models.PaymentOptions",
         "name": "paymentOptions",
         "type": "tuple"
       },
@@ -1153,12 +1428,12 @@
             "type": "address"
           },
           {
-            "internalType": "enum RarumSales.DeliveryType",
+            "internalType": "enum Models.DeliveryType",
             "name": "deliveryType",
             "type": "uint8"
           }
         ],
-        "internalType": "struct RarumSales.DeliveryOptions",
+        "internalType": "struct Models.DeliveryOptions",
         "name": "deliveryOptions",
         "type": "tuple"
       }
@@ -1229,6 +1504,11 @@
             "type": "bool"
           },
           {
+            "internalType": "enum Models.OfferType",
+            "name": "offerType",
+            "type": "uint8"
+          },
+          {
             "components": [
               {
                 "internalType": "uint256",
@@ -1246,7 +1526,7 @@
                 "type": "address"
               }
             ],
-            "internalType": "struct RarumSales.PaymentOptions",
+            "internalType": "struct Models.PaymentOptions",
             "name": "paymentOptions",
             "type": "tuple"
           },
@@ -1273,17 +1553,17 @@
                 "type": "address"
               },
               {
-                "internalType": "enum RarumSales.DeliveryType",
+                "internalType": "enum Models.DeliveryType",
                 "name": "deliveryType",
                 "type": "uint8"
               }
             ],
-            "internalType": "struct RarumSales.DeliveryOptions",
+            "internalType": "struct Models.DeliveryOptions",
             "name": "deliveryOptions",
             "type": "tuple"
           }
         ],
-        "internalType": "struct RarumSales.Offer[]",
+        "internalType": "struct Models.Offer[]",
         "name": "",
         "type": "tuple[]"
       }
@@ -1354,6 +1634,11 @@
             "type": "bool"
           },
           {
+            "internalType": "enum Models.OfferType",
+            "name": "offerType",
+            "type": "uint8"
+          },
+          {
             "components": [
               {
                 "internalType": "uint256",
@@ -1371,7 +1656,7 @@
                 "type": "address"
               }
             ],
-            "internalType": "struct RarumSales.PaymentOptions",
+            "internalType": "struct Models.PaymentOptions",
             "name": "paymentOptions",
             "type": "tuple"
           },
@@ -1398,17 +1683,17 @@
                 "type": "address"
               },
               {
-                "internalType": "enum RarumSales.DeliveryType",
+                "internalType": "enum Models.DeliveryType",
                 "name": "deliveryType",
                 "type": "uint8"
               }
             ],
-            "internalType": "struct RarumSales.DeliveryOptions",
+            "internalType": "struct Models.DeliveryOptions",
             "name": "deliveryOptions",
             "type": "tuple"
           }
         ],
-        "internalType": "struct RarumSales.Offer[]",
+        "internalType": "struct Models.Offer[]",
         "name": "",
         "type": "tuple[]"
       }
@@ -1475,6 +1760,52 @@
     "inputs": [
       {
         "internalType": "address",
+        "name": "_nft",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_fee",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_metadataURI",
+        "type": "string"
+      },
+      {
+        "internalType": "bool",
+        "name": "_authorized",
+        "type": "bool"
+      }
+    ],
+    "name": "setCollection",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_nft",
+        "type": "address"
+      },
+      {
+        "internalType": "bool",
+        "name": "_newState",
+        "type": "bool"
+      }
+    ],
+    "name": "setCollectionStatus",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
         "name": "_owner",
         "type": "address"
       },
@@ -1489,7 +1820,25 @@
         "type": "bool"
       }
     ],
-    "name": "setOfferActive",
+    "name": "setOfferStatus",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_paymentToken",
+        "type": "address"
+      },
+      {
+        "internalType": "bool",
+        "name": "_newState",
+        "type": "bool"
+      }
+    ],
+    "name": "setPaymentTokenStatus",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
