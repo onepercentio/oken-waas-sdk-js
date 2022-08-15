@@ -1,0 +1,880 @@
+[
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "index",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint128",
+            "name": "start",
+            "type": "uint128"
+          },
+          {
+            "internalType": "uint128",
+            "name": "end",
+            "type": "uint128"
+          },
+          {
+            "internalType": "uint16",
+            "name": "installments",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint256",
+            "name": "compensationId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "optionId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "compensation",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "options",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "talent",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "chief",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "customer",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "part",
+            "type": "uint256"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct TalentContracts.Contract",
+        "name": "c",
+        "type": "tuple"
+      }
+    ],
+    "name": "ContractAdded",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "previousAdminRole",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "newAdminRole",
+        "type": "bytes32"
+      }
+    ],
+    "name": "RoleAdminChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      }
+    ],
+    "name": "RoleGranted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      }
+    ],
+    "name": "RoleRevoked",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "ADMIN_ROLE",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "DECIMALS",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "DEFAULT_ADMIN_ROLE",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "OPERATOR_ROLE",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint128",
+            "name": "start",
+            "type": "uint128"
+          },
+          {
+            "internalType": "uint128",
+            "name": "end",
+            "type": "uint128"
+          },
+          {
+            "internalType": "uint16",
+            "name": "installments",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint256",
+            "name": "compensationId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "optionId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "talentId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "chief",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "customer",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "compensation",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "options",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "talent",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "part",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct TalentContracts.ContractInfo",
+        "name": "_contractInfo",
+        "type": "tuple"
+      }
+    ],
+    "name": "addContract",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_index",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_from",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_to",
+        "type": "uint256"
+      }
+    ],
+    "name": "batchSettle",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "chiefsGroup",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "contracts",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "index",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint128",
+        "name": "start",
+        "type": "uint128"
+      },
+      {
+        "internalType": "uint128",
+        "name": "end",
+        "type": "uint128"
+      },
+      {
+        "internalType": "uint16",
+        "name": "installments",
+        "type": "uint16"
+      },
+      {
+        "internalType": "uint256",
+        "name": "compensationId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "optionId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "compensation",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "options",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "talent",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "chief",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "customer",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "part",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_account",
+        "type": "address"
+      }
+    ],
+    "name": "contractsByAccount",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "index",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint128",
+                "name": "start",
+                "type": "uint128"
+              },
+              {
+                "internalType": "uint128",
+                "name": "end",
+                "type": "uint128"
+              },
+              {
+                "internalType": "uint16",
+                "name": "installments",
+                "type": "uint16"
+              },
+              {
+                "internalType": "uint256",
+                "name": "compensationId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "optionId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "compensation",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "options",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "talent",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "chief",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "customer",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "part",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct TalentContracts.Contract",
+            "name": "c",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {
+                "internalType": "address[2]",
+                "name": "talentSources",
+                "type": "address[2]"
+              },
+              {
+                "internalType": "uint256[2]",
+                "name": "talentAmounts",
+                "type": "uint256[2]"
+              },
+              {
+                "internalType": "uint256[2]",
+                "name": "talentIds",
+                "type": "uint256[2]"
+              },
+              {
+                "internalType": "uint256[2]",
+                "name": "compensationAmounts",
+                "type": "uint256[2]"
+              },
+              {
+                "internalType": "uint256[2]",
+                "name": "optionAmounts",
+                "type": "uint256[2]"
+              },
+              {
+                "internalType": "uint256",
+                "name": "settledAt",
+                "type": "uint256"
+              },
+              {
+                "internalType": "bool",
+                "name": "settled",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct TalentContracts.Installment[]",
+            "name": "p",
+            "type": "tuple[]"
+          }
+        ],
+        "internalType": "struct TalentContracts.ContractWithInstallments[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_index",
+        "type": "uint256"
+      }
+    ],
+    "name": "getContract",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "index",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint128",
+                "name": "start",
+                "type": "uint128"
+              },
+              {
+                "internalType": "uint128",
+                "name": "end",
+                "type": "uint128"
+              },
+              {
+                "internalType": "uint16",
+                "name": "installments",
+                "type": "uint16"
+              },
+              {
+                "internalType": "uint256",
+                "name": "compensationId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "optionId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "compensation",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "options",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "talent",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "chief",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "customer",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "part",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct TalentContracts.Contract",
+            "name": "c",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {
+                "internalType": "address[2]",
+                "name": "talentSources",
+                "type": "address[2]"
+              },
+              {
+                "internalType": "uint256[2]",
+                "name": "talentAmounts",
+                "type": "uint256[2]"
+              },
+              {
+                "internalType": "uint256[2]",
+                "name": "talentIds",
+                "type": "uint256[2]"
+              },
+              {
+                "internalType": "uint256[2]",
+                "name": "compensationAmounts",
+                "type": "uint256[2]"
+              },
+              {
+                "internalType": "uint256[2]",
+                "name": "optionAmounts",
+                "type": "uint256[2]"
+              },
+              {
+                "internalType": "uint256",
+                "name": "settledAt",
+                "type": "uint256"
+              },
+              {
+                "internalType": "bool",
+                "name": "settled",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct TalentContracts.Installment[]",
+            "name": "p",
+            "type": "tuple[]"
+          }
+        ],
+        "internalType": "struct TalentContracts.ContractWithInstallments",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getRoleAdmin",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "uint256",
+        "name": "index",
+        "type": "uint256"
+      }
+    ],
+    "name": "getRoleMember",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getRoleMemberCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "grantRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "hasRole",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_nft",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_operator",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_chiefs",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_chiefsGroupId",
+        "type": "uint256"
+      }
+    ],
+    "name": "initialize",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "nft",
+    "outputs": [
+      {
+        "internalType": "contract IERC1155Upgradeable",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_index",
+        "type": "uint256"
+      }
+    ],
+    "name": "removeContract",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "renounceRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "revokeRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_index",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_installment",
+        "type": "uint256"
+      }
+    ],
+    "name": "settle",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes4",
+        "name": "interfaceId",
+        "type": "bytes4"
+      }
+    ],
+    "name": "supportsInterface",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
