@@ -1,6 +1,6 @@
 {
   "name": "oken-waas",
-  "version": "1.7.3",
+  "version": "1.8.0",
   "description": "Oken Wallet as a Service SDK",
   "main": "index.js",
   "scripts": {
