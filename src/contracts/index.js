@@ -12,7 +12,7 @@ const abiMap = {
   'RarumToken': 'RarumToken',
   'RarumSales': 'RarumSales',
   'lootbox': 'Lootbox',
-  'talentContracts': 'TalentContracts',
+  'TalentContracts': 'TalentContracts',
   'CarbonChain': 'CarbonChain',
   'ERC20Payout': 'ERC20Payout',
   'registry': 'OneSignRegistry'
@@ -48,7 +48,7 @@ module.exports = (api, network) => ({
   rarumSales: ({ address }) => contract('RarumSales', api, network, address),
   controlledToken: ({ address }) => contract('controlledToken', api, network, address),
   lootbox: ({ address }) => contract('lootbox', api, network, address),
-  talentContracts: ({ address }) => contract('talentContracts', api, network, address),
+  talentContracts: ({ address }) => contract('TalentContracts', api, network, address),
   carbonChain: ({ address }) => contract('CarbonChain', api, network, address),
   registry: ({ address }) => contract('registry', api, network, address),
   ERC20Payout: ({ address }) => contract('ERC20Payout', api, network, address),
