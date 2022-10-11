@@ -1,6 +1,7 @@
 module.exports = {
   ETHEREUM: {
     KOVAN: 'kovan',
+    GOERLI: 'goerli',
     ROPSTEN: 'ropsten',
     RINKEBY: 'rinkeby',
     MAINNET: 'mainnet'
