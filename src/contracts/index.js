@@ -18,7 +18,8 @@ const abiMap = {
   'LootBoxNFT': 'LootBoxNFT',
   'LootBoxBatchMint': 'LootBoxBatchMint',
   'ERC20Payout': 'ERC20Payout',
-  'registry': 'OneSignRegistry'
+  'registry': 'OneSignRegistry',
+  'BatchOperation': 'BatchOperation'
 }
 
 const typesAndMutability = v => ({ type: v.type, mutability: v.stateMutability })
@@ -55,6 +56,7 @@ module.exports = (api, network) => ({
   lootboxNFT: ({ address }) => contract('LootBoxNFT', api, network, address),
   talentContracts: ({ address }) => contract('TalentContracts', api, network, address),
   carbonChain: ({ address }) => contract('CarbonChain', api, network, address),
+  batchOperation: ({ address }) => contract('BatchOperation', api, network, address),
   kyc: ({ address }) => contract('kyc', api, network, address),
   registry: ({ address }) => contract('registry', api, network, address),
   ERC20Payout: ({ address }) => contract('ERC20Payout', api, network, address),
