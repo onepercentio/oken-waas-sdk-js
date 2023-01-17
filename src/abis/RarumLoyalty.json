@@ -343,13 +343,6 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "__ERC721GenericMetadata_init",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
         "internalType": "string",
@@ -857,6 +850,11 @@
         "internalType": "string",
         "name": "_benefit",
         "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
       }
     ],
     "name": "redeem",
