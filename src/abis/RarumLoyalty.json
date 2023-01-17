@@ -131,7 +131,13 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "newValue",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "remaining",
         "type": "uint256"
       }
     ],
