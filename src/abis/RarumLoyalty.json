@@ -73,6 +73,19 @@
     "inputs": [
       {
         "indexed": false,
+        "internalType": "uint8",
+        "name": "version",
+        "type": "uint8"
+      }
+    ],
+    "name": "Initialized",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
         "internalType": "uint256",
         "name": "index",
         "type": "uint256"
@@ -437,47 +450,54 @@
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "_owner",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_operator",
-        "type": "address"
-      },
-      {
-        "internalType": "bool",
-        "name": "_approval",
-        "type": "bool"
-      },
-      {
-        "internalType": "bytes32",
+        "components": [
+          {
+            "internalType": "address",
+            "name": "signer",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint32",
+            "name": "deadline",
+            "type": "uint32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "authorization",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "uint8",
+            "name": "v",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "r",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "s",
+            "type": "bytes32"
+          }
+        ],
+        "internalType": "struct TieredMetadataToken.TransferAuthorization",
         "name": "_authorization",
-        "type": "bytes32"
-      },
-      {
-        "internalType": "uint32",
-        "name": "_deadline",
-        "type": "uint32"
-      },
-      {
-        "internalType": "uint8",
-        "name": "_v",
-        "type": "uint8"
-      },
-      {
-        "internalType": "bytes32",
-        "name": "_r",
-        "type": "bytes32"
-      },
-      {
-        "internalType": "bytes32",
-        "name": "_s",
-        "type": "bytes32"
+        "type": "tuple"
       }
     ],
-    "name": "authorize",
+    "name": "authorizedTransfer",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -959,7 +979,7 @@
       },
       {
         "internalType": "bytes",
-        "name": "_data",
+        "name": "data",
         "type": "bytes"
       }
     ],
