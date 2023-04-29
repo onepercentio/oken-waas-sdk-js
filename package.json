@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"not implemented yet\"",
     "build-abi": "typechain --target=web3-v1 ./src/abis/*.json ./typechain-types",
-    "postinstall": "npm run build-api",
     "prepublish": "npm run build-api"
   },
   "repository": {
