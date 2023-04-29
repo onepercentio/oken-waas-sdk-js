@@ -4,7 +4,10 @@
   "description": "Oken Wallet as a Service SDK",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"not implemented yet\""
+    "test": "echo \"not implemented yet\"",
+    "build-abi": "typechain --target=web3-v1 ./src/abis/*.json ./typechain-types",
+    "postinstall": "npm run build-api",
+    "prepublish": "npm run build-api"
   },
   "repository": {
     "type": "git",
@@ -14,6 +17,7 @@
     "oken",
     "waas"
   ],
+  "types": "src/types.d.ts",
   "author": "OnePercent",
   "license": "ISC",
   "bugs": {
@@ -25,5 +29,9 @@
     "axios-error": "^1.0.4",
     "jsonwebtoken": "^9.0.0",
     "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@typechain/web3-v1": "^6.0.2",
+    "typechain": "^8.1.1"
   }
 }
