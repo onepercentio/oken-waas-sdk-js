@@ -22,7 +22,7 @@ const abiMap = {
   'ERC20Payout': 'ERC20Payout',
   'registry': 'OneSignRegistry',
   'BatchOperation': 'BatchOperation',
-  'KonaNestpaces': 'KonaNestpaces'
+  'KonaNetspaces': 'KonaNetspaces'
 }
 
 const typesAndMutability = v => ({ type: v.type, mutability: v.stateMutability })
@@ -65,5 +65,5 @@ module.exports = (api, network) => ({
   kyc: ({ address }) => contract('kyc', api, network, address),
   registry: ({ address }) => contract('registry', api, network, address),
   ERC20Payout: ({ address }) => contract('ERC20Payout', api, network, address),
-  konaNestpaces: ({ address }) => contract('KonaNetspaces', api, network, address),
+  KonaNetspaces: ({ address }) => contract('KonaNetspaces', api, network, address),
 })
