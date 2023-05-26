@@ -65,5 +65,5 @@ module.exports = (api, network) => ({
   kyc: ({ address }) => contract('kyc', api, network, address),
   registry: ({ address }) => contract('registry', api, network, address),
   ERC20Payout: ({ address }) => contract('ERC20Payout', api, network, address),
-  KonaNetspaces: ({ address }) => contract('KonaNetspaces', api, network, address),
+  konaNetspaces: ({ address }) => contract('KonaNetspaces', api, network, address),
 })
