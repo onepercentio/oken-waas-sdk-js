@@ -22,7 +22,7 @@ const abiMap = {
   'ERC20Payout': 'ERC20Payout',
   'registry': 'OneSignRegistry',
   'BatchOperation': 'BatchOperation',
-  'KonaNestpaces': 'KonaNestpaces'
+  'KonaNetspaces': 'KonaNetspaces'
 }
 
 const typesAndMutability = v => ({ type: v.type, mutability: v.stateMutability })
