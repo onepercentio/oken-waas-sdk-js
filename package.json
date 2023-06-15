@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"not implemented yet\"",
-    "build-abi": "typechain --target=web3-v1 ./src/abis/*.json ./typechain-types",
+    "build-abi": "typechain --target=web3-v1 ./src/abis/*.json ./typechain-types --ts-nocheck",
     "prepublish": "npm run build-api"
   },
   "repository": {
