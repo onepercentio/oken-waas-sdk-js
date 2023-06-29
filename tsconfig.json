@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2021"],
+    "module": "commonjs",
+    "target": "ES2021",
+    "esModuleInterop":true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "outDir": "dist",
+    "sourceMap": true,
+    "strict": true,
+    "allowJs": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+    "rootDirs":["src"],
+    "rootDir": ".",
+    "resolveJsonModule": true,
+  },
+  "compileOnSave": true,
+  "include": ["./src/**/*.ts"],
+  "exclude": [
+    "node_modules",
+    "types",
+    "oken"
+  ]
+}

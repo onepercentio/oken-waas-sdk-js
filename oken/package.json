@@ -1,0 +1,41 @@
+{
+  "name": "oken-typechain",
+  "description": "🔌 TypeChain target for Oken-WaaS",
+  "keywords": [
+    "oken-waas",
+    "ethereum",
+    "TypeChain",
+    "TypeScript"
+  ],
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": "https://github.com/ethereum-ts/Typechain",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": "./dist/cli/cli.js",
+  "files": [
+    "dist/**",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "format": "prettier --config .prettierrc --ignore-path .prettierignore --check \"./**/*.ts\" README.md",
+    "format:fix": "prettier --config .prettierrc --ignore-path .prettierignore --write \"./**/*.ts\" README.md",
+    "typecheck": "tsc --noEmit --incremental false --composite false",
+    "clean": "rm -rf dist && rm -f tsconfig.build.tsbuildinfo",
+    "test": "echo ok",
+    "test:fix": "npm lint:fix && npm format:fix && npm test && npm typecheck",
+    "build": "tsc --build --verbose ./tsconfig.build.json",
+    "watch": "tsc --build --watch ./tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.139",
+    "@types/node": "^20.3.2",
+    "typechain": "^8.2.0",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
+}

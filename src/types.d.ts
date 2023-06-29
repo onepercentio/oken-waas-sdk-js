@@ -1,4 +1,4 @@
-export * from '../types/web3-v1-contracts'
+export * from '../types/oken-contracts'
 
 export declare function connect(arg: any): any;
 export declare const networks: any;

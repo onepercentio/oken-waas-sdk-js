@@ -1,0 +1,2 @@
+# Typechain target Oken-WaaS
+
