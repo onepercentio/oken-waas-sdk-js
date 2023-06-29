@@ -15,6 +15,7 @@
     "rootDirs":["src"],
     "rootDir": ".",
     "resolveJsonModule": true,
+    "declaration": true
   },
   "compileOnSave": true,
   "include": ["./src/**/*.ts"],

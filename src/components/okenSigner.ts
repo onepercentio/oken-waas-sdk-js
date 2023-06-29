@@ -1,7 +1,7 @@
-const crypto = require('crypto')
-const jwt = require('jsonwebtoken')
+import crypto from 'crypto'
+import jwt from 'jsonwebtoken'
 
-const okenSigner = (okenClientId, privateKey) => ({
+export default (okenClientId: string, privateKey: string) => ({
   signJWT: () => jwt.sign({ 'oken-client-id': okenClientId }, privateKey, { algorithm: 'RS256', expiresIn: '21600s' }),
   signMsg: payload => {
     const payloadWithTimestamp = {
@@ -22,5 +22,3 @@ const okenSigner = (okenClientId, privateKey) => ({
     return signedPayload
   }
 })
-
-module.exports = okenSigner

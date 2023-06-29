@@ -1,13 +1,16 @@
-const { fromAxios } = require('./errorHandler')
-const axios = require('axios').default
+import axios from 'axios'
+
+import handler from './errorHandler'
+
+const { fromAxios } = handler
 
 const api = axios.create({})
 
-module.exports = (endpoint, signer) => {
+export default (endpoint, signer) => {
   api.defaults.baseURL = endpoint
 
   return {
-    post: async (route, payload = {}) => {
+    post: async (route: string, payload: any = {}) => {
       try {
         const { data } = await api.post(
           route,
@@ -24,7 +27,7 @@ module.exports = (endpoint, signer) => {
         fromAxios(error)
       }
     },
-    get: async (route, payload) => {
+    get: async (route: string, payload: any) => {
       try {
         const { data } = await api.get(
           route,

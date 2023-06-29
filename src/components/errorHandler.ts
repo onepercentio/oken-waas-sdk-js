@@ -1,7 +1,8 @@
 const AxiosError = require('axios-error')
 
 class DomainError extends Error {
-  constructor(message, info) {
+  public info
+  constructor(message, info?) {
     super()
     this.message = message
     this.info = info
@@ -44,7 +45,7 @@ const fromAxios = error => {
 
 }
 
-module.exports = {
+export default {
   ALREADY_CREATED,
   SERVER_ERROR,
   UNAUTHORIZED,
