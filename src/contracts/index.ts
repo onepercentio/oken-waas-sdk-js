@@ -1,86 +1,45 @@
-import fs from 'fs'
-import path from 'path'
-import _ from 'lodash'
+
+import {contract} from './helpers'
 import {
-  RarumNFT,
-  RarumCollectibles,
-  RarumNFTAuction,
-  RarumToken,
-  RarumSales,
-  RarumLoyalty,
-  ControlledToken,
-  LootBoxBatchMint,
-  Lootbox,
-  LootBoxNFT,
-  TalentContracts,
-  BatchOperation,
-  KYC,
-  OneSignRegistry,
-  ERC20Payout,
-  KonaNetspaces,
-  OkenNFT,
-} from '../../oken-types'
-
-const abiMap = {
-  'nft': 'OkenNFT',
-  'controlledToken': 'ControlledToken',
-  'tropixRouter': 'TropixRouter',
-  'tropixWalletETH': 'TropixWalletETH',
-  'RarumNFT': 'RarumNFT',
-  'RarumCollectibles': 'RarumCollectibles',
-  'RarumNFTAuction': 'RarumNFTAuction',
-  'RarumToken': 'RarumToken',
-  'RarumSales': 'RarumSales',
-  'RarumLoyalty': 'RarumLoyalty',
-  'lootbox': 'Lootbox',
-  'TalentContracts': 'TalentContracts',
-  'kyc': 'KYC',
-  'LootBoxNFT': 'LootBoxNFT',
-  'LootBoxBatchMint': 'LootBoxBatchMint',
-  'ERC20Payout': 'ERC20Payout',
-  'registry': 'OneSignRegistry',
-  'BatchOperation': 'BatchOperation',
-  'KonaNetspaces': 'KonaNetspaces'
-}
-
-const typesAndMutability = v => ({ type: v.type, mutability: v.stateMutability })
-
-const typeFunctions = v => v.type === 'function'
-
-const buildApiUrls = (baseParams, api) => (v, method) => v.mutability === 'view'
-  ? (params) => api.get('/contracts/state', { ...baseParams, method, params })
-  : (payload) => api.post('/transactions', { ...baseParams, method, params: payload })
-
-const contract = (contractId, api, network, contractAddress) => {
-  const abiPath = path.join(__dirname, '..', `abis/${abiMap[contractId]}.json`)
-  const abi = JSON.parse(fs.readFileSync(abiPath).toString())
-
-  const contractApiServices = buildApiUrls({ network, contractId, contractAddress }, api)
-
-  return _(abi)
-    .keyBy('name')
-    .mapValues(typesAndMutability)
-    .pickBy(typeFunctions)
-    .mapValues(contractApiServices)
-    .value()
-}
+ BatchOperation,
+ControlledToken,
+Custody,
+ERC20Payout,
+KYC,
+KonaNetspaces,
+LootBoxBatchMint,
+LootBoxNFT,
+Lootbox,
+OkenNFT,
+RarumCollectibles,
+RarumLoyalty,
+RarumNFT,
+RarumNFTAuction,
+RarumSales,
+RarumToken,
+TalentContracts,
+TropixRouter,
+TropixWalletETH
+} from '/home/highlander/projects/oken-waas-sdk-js/oken-types'
 
 export default (api, network: string) => ({
-  nft: ({ address }: { address: string }): OkenNFT => contract('nft', api, network, address),
-  rarumNFT: ({ address }: { address: string }): RarumNFT => contract('RarumNFT', api, network, address),
-  rarumCollectibles: ({ address }: { address: string }): RarumCollectibles => contract('RarumCollectibles', api, network, address),
-  rarumNFTAuction: ({ address }: { address: string }): RarumNFTAuction => contract('RarumNFTAuction', api, network, address),
-  rarumToken: ({ address }: { address: string }): RarumToken => contract('RarumToken', api, network, address),
-  rarumSales: ({ address }: { address: string }): RarumSales => contract('RarumSales', api, network, address),
-  rarumLoyalty: ({ address }: { address: string }): RarumLoyalty => contract('RarumLoyalty', api, network, address),
-  controlledToken: ({ address }: { address: string }): ControlledToken => contract('controlledToken', api, network, address),
-  lootbox: ({ address }: { address: string }): Lootbox => contract('lootbox', api, network, address),
-  lootboxBatchMint: ({ address }: { address: string }): LootBoxBatchMint => contract('LootBoxBatchMint', api, network, address),
-  lootboxNFT: ({ address }: { address: string }): LootBoxNFT => contract('LootBoxNFT', api, network, address),
-  talentContracts: ({ address }: { address: string }): TalentContracts => contract('TalentContracts', api, network, address),
   batchOperation: ({ address }: { address: string }): BatchOperation => contract('BatchOperation', api, network, address),
-  kyc: ({ address }: { address: string }): KYC => contract('kyc', api, network, address),
-  registry: ({ address }: { address: string }): OneSignRegistry => contract('registry', api, network, address),
-  ERC20Payout: ({ address }: { address: string }): ERC20Payout => contract('ERC20Payout', api, network, address),
+  controlledToken: ({ address }: { address: string }): ControlledToken => contract('ControlledToken', api, network, address),
+  custody: ({ address }: { address: string }): Custody => contract('Custody', api, network, address),
+  eRC20Payout: ({ address }: { address: string }): ERC20Payout => contract('ERC20Payout', api, network, address),
+  kYC: ({ address }: { address: string }): KYC => contract('KYC', api, network, address),
   konaNetspaces: ({ address }: { address: string }): KonaNetspaces => contract('KonaNetspaces', api, network, address),
+  lootBoxBatchMint: ({ address }: { address: string }): LootBoxBatchMint => contract('LootBoxBatchMint', api, network, address),
+  lootBoxNFT: ({ address }: { address: string }): LootBoxNFT => contract('LootBoxNFT', api, network, address),
+  lootbox: ({ address }: { address: string }): Lootbox => contract('Lootbox', api, network, address),
+  okenNFT: ({ address }: { address: string }): OkenNFT => contract('OkenNFT', api, network, address),
+  rarumCollectibles: ({ address }: { address: string }): RarumCollectibles => contract('RarumCollectibles', api, network, address),
+  rarumLoyalty: ({ address }: { address: string }): RarumLoyalty => contract('RarumLoyalty', api, network, address),
+  rarumNFT: ({ address }: { address: string }): RarumNFT => contract('RarumNFT', api, network, address),
+  rarumNFTAuction: ({ address }: { address: string }): RarumNFTAuction => contract('RarumNFTAuction', api, network, address),
+  rarumSales: ({ address }: { address: string }): RarumSales => contract('RarumSales', api, network, address),
+  rarumToken: ({ address }: { address: string }): RarumToken => contract('RarumToken', api, network, address),
+  talentContracts: ({ address }: { address: string }): TalentContracts => contract('TalentContracts', api, network, address),
+  tropixRouter: ({ address }: { address: string }): TropixRouter => contract('TropixRouter', api, network, address),
+  tropixWalletETH: ({ address }: { address: string }): TropixWalletETH => contract('TropixWalletETH', api, network, address)
 })
