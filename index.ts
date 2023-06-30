@@ -1,12 +1,12 @@
-import wallet from './wallets'
-import contracts from './contracts'
-import transactions from './transactions'
-import endpoints, { Endpoints } from './config/endpoints'
-import networks from './config/networks'
-import typedData from './typed_data'
-import okenSigner from './components/okenSigner'
-import API from './components/api'
-import errors from './components/errorHandler'
+import wallet from './src/wallets'
+import contracts from './src/contracts'
+import transactions from './src/transactions'
+import endpoints, { Endpoints } from './src/config/endpoints'
+import networks from './src/config/networks'
+import typedData from './src/typed_data'
+import okenSigner from './src/components/okenSigner'
+import API from './src/components/api'
+import errors from './src/components/errorHandler'
 
 export type Config = {
   endpoint: Endpoints,

@@ -1,24 +1,25 @@
 import fs from 'fs'
 import path from 'path'
 import _ from 'lodash'
-import { RarumNFT } from '../../types/oken-contracts/RarumNFT'
-import { RarumCollectibles } from '../../types/oken-contracts/RarumCollectibles'
-import { RarumNFTAuction } from '../../types/oken-contracts/RarumNFTAuction'
-import { RarumToken } from '../../types/oken-contracts/RarumToken'
-import { RarumSales } from '../../types/oken-contracts/RarumSales'
-import { RarumLoyalty } from '../../types/oken-contracts/RarumLoyalty'
-import { ControlledToken } from '../../types/oken-contracts/ControlledToken'
-import { LootBoxBatchMint } from '../../types/oken-contracts/LootBoxBatchMint'
-import { Lootbox } from '../../types/oken-contracts/Lootbox'
-import { LootBoxNFT } from '../../types/oken-contracts/LootBoxNFT'
-import { TalentContracts } from '../../types/oken-contracts/TalentContracts'
-import { CarbonChain } from '../../types/oken-contracts/CarbonChain'
-import { BatchOperation } from '../../types/oken-contracts/BatchOperation'
-import { KYC } from '../../types/oken-contracts/KYC'
-import { OneSignRegistry } from '../../types/oken-contracts/OneSignRegistry'
-import { ERC20Payout } from '../../types/oken-contracts/ERC20Payout'
-import { KonaNetspaces } from '../../types/oken-contracts/KonaNetspaces'
-import { OkenNFT } from '../../types/oken-contracts/OkenNFT'
+import {
+  RarumNFT,
+  RarumCollectibles,
+  RarumNFTAuction,
+  RarumToken,
+  RarumSales,
+  RarumLoyalty,
+  ControlledToken,
+  LootBoxBatchMint,
+  Lootbox,
+  LootBoxNFT,
+  TalentContracts,
+  BatchOperation,
+  KYC,
+  OneSignRegistry,
+  ERC20Payout,
+  KonaNetspaces,
+  OkenNFT,
+} from '../../oken-types'
 
 const abiMap = {
   'nft': 'OkenNFT',
@@ -34,7 +35,6 @@ const abiMap = {
   'lootbox': 'Lootbox',
   'TalentContracts': 'TalentContracts',
   'kyc': 'KYC',
-  'CarbonChain': 'CarbonChain',
   'LootBoxNFT': 'LootBoxNFT',
   'LootBoxBatchMint': 'LootBoxBatchMint',
   'ERC20Payout': 'ERC20Payout',
@@ -78,7 +78,6 @@ export default (api, network: string) => ({
   lootboxBatchMint: ({ address }: { address: string }): LootBoxBatchMint => contract('LootBoxBatchMint', api, network, address),
   lootboxNFT: ({ address }: { address: string }): LootBoxNFT => contract('LootBoxNFT', api, network, address),
   talentContracts: ({ address }: { address: string }): TalentContracts => contract('TalentContracts', api, network, address),
-  carbonChain: ({ address }: { address: string }): CarbonChain => contract('CarbonChain', api, network, address),
   batchOperation: ({ address }: { address: string }): BatchOperation => contract('BatchOperation', api, network, address),
   kyc: ({ address }: { address: string }): KYC => contract('kyc', api, network, address),
   registry: ({ address }: { address: string }): OneSignRegistry => contract('registry', api, network, address),

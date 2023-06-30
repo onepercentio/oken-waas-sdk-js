@@ -4,9 +4,10 @@ export function codegenInputTypes(input: Array<AbiParameter>): string {
   if (input.length === 0) {
     return ''
   }
-  return (
-    input.map((input, index) => `${input.name || `arg${index}`}: ${codegenInputType(input.type)}`).join(', ') + ', '
-  )
+  const params = input.map((item, index) => item.name || `arg${index}`)
+  const defs = input.map((item, index) => `${item.name || `arg${index}`}: ${codegenInputType(item.type)}`).join(', ') + ', '
+
+  return (`{${params}}:{${defs}}`)
 }
 
 export function codegenOutputTypes(outputs: Array<AbiOutputParameter>): string {
@@ -14,7 +15,8 @@ export function codegenOutputTypes(outputs: Array<AbiOutputParameter>): string {
     return codegenOutputType(outputs[0].type)
   } else {
     // NOTE: using object here, instead of array is intentional as this is what truffle returns in fact. This sometimes makes a difference (example: exploding)
-    return `{${outputs.map((param, index) => `${index}: ${codegenOutputType(param.type)}`).join(', ')}}`
+    const defs = outputs.map((item, index) => `${item.name || `arg${index}`}: ${codegenOutputType(item.type)}`).join(', ') + ', '
+    return (`{${defs}}`)
   }
 }
 

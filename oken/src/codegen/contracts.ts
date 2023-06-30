@@ -29,8 +29,6 @@ function codegenContractInterface(c: Contract): string {
 
   return `
 export interface ${c.name} {
-  ${functionsCode}
-
     ${functionsCode}
     ${values(c.functions)
       .filter((v) => v.length > 1) // has overloaded functions

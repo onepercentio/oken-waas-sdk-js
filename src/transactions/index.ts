@@ -33,7 +33,7 @@ const parseEvents = events => events
 
 export default (api) => {
   return {
-    get: (id: string, events: string[]): Promise<Transaction | Transaction[]> => id ?
+    get: (id?: string, events?: string[]): Promise<Transaction | Transaction[]> => id ?
       api.get(`/transactions/${id}`, parseEvents(events)) as Promise<Transaction> :
       api.get('/transactions') as Promise<Transaction[]>
   }

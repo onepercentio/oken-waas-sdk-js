@@ -1,4 +1,3 @@
-import { readFileSync } from 'fs'
 import { join, relative, resolve } from 'path'
 import {
   Config,
@@ -18,7 +17,7 @@ export interface IOkenCfg {
   outDir?: string
 }
 
-const DEFAULT_OUT_PATH = './types/oken-contracts/'
+const DEFAULT_OUT_PATH = './oken-types/'
 
 export default class OkenWaas extends TypeChainTarget {
   name = 'Oken'
@@ -45,8 +44,6 @@ export default class OkenWaas extends TypeChainTarget {
     const documentation = extractDocumentation(file.contents)
 
     const contract = parse(abi, path, documentation)
-    // console.log("file: index.ts:48 | transformFile | contract:", codegenContract(contract));
-    // process.exit()
 
     this.contracts.push(contract)
 
@@ -61,11 +58,7 @@ export default class OkenWaas extends TypeChainTarget {
       {
         path: join(this.outDirAbs, 'index.d.ts'),
         contents: codegenArtifactHeaders(this.contracts),
-      },
-      {
-        path: join(this.outDirAbs, 'types.d.ts'),
-        contents: readFileSync(join(__dirname, '../static/types.d.ts'), 'utf-8'),
-      },
+      }
     ]
   }
 }

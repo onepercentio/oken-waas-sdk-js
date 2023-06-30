@@ -9,7 +9,6 @@
     "outDir": "dist",
     "sourceMap": true,
     "strict": true,
-    "allowJs": true,
     "noImplicitAny": false,
     "skipLibCheck": true,
     "rootDirs":["src"],
@@ -18,10 +17,9 @@
     "declaration": true
   },
   "compileOnSave": true,
-  "include": ["./src/**/*.ts"],
+  "include": ["./src/**/*.ts", "index.ts", "./types"],
   "exclude": [
     "node_modules",
-    "types",
     "oken"
   ]
 }
