@@ -1,3 +1,11 @@
+export const alchemyNetworkMap =  {
+  mainnet: 'homestead',
+  goerli: 'goerli',
+  rinkeby: 'rinkeby',
+  polygon: 'matic',
+  mumbai: 'maticmum',
+}
+
 export type Networks = {
   ETHEREUM: {
     KOVAN: string

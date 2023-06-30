@@ -2,13 +2,13 @@
   "name": "oken-waas",
   "version": "1.8.20",
   "description": "Oken Wallet as a Service SDK",
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"not implemented yet\"",
-    "build": "tsc",
-    "build-abi": "typechain --target oken ./src/abis/*.json ./typechain-types --ts-nocheck",
+    "build": "tsc --project tsconfig.json && cp -r oken-types dist",
+    "build-abi": "typechain --target oken ./src/abis/*.json",
     "build-exports": "ts-node src/contracts/codegen.ts",
-    "watch": "tsc --watch",
+    "watch": "tsc --watch --project tsconfig.json",
     "prepare": "npm run build-abi && npm run build-exports && npm run build"
   },
   "repository": {
@@ -19,7 +19,7 @@
     "oken",
     "waas"
   ],
-  "types": "./dist/src/index.d.ts",
+  "types": "./dist/index.d.ts",
   "author": "OnePercent",
   "license": "ISC",
   "bugs": {
@@ -29,12 +29,14 @@
   "dependencies": {
     "axios": "^1.4.0",
     "axios-error": "^1.0.4",
+    "ethers": "^6.6.2",
     "jsonwebtoken": "^9.0.0",
     "lodash": "^4.17.21",
     "remove": "^0.1.5"
   },
   "devDependencies": {
     "@typechain/web3-v1": "^6.0.3",
+    "@types/jsonwebtoken": "^9.0.2",
     "dts-gen": "^0.6.1",
     "dts-generator": "^3.0.0",
     "ts-node": "^10.9.1",

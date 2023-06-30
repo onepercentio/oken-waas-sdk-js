@@ -17,9 +17,8 @@
     "declaration": true
   },
   "compileOnSave": true,
-  "include": ["./src/**/*.ts", "index.ts", "./types"],
+  "include": ["./src/**/*.ts", "./src/**/*.json", "index.ts", "oken-types"],
   "exclude": [
-    "node_modules",
-    "oken"
+    "node_modules"
   ]
 }

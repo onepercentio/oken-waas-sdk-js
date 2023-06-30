@@ -1,9 +1,18 @@
 import crypto from 'crypto'
 import jwt from 'jsonwebtoken'
 
+export type Message = {
+  [key: string]: unknown,
+}
+
+export type SignedMessage = Message & {
+  timestamp: string,
+  signature: string
+}
+
 export default (okenClientId: string, privateKey: string) => ({
   signJWT: () => jwt.sign({ 'oken-client-id': okenClientId }, privateKey, { algorithm: 'RS256', expiresIn: '21600s' }),
-  signMsg: payload => {
+  signMsg: (payload: Message): SignedMessage => {
     const payloadWithTimestamp = {
       ...payload,
       timestamp: new Date().toISOString()

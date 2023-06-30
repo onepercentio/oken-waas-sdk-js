@@ -14,6 +14,7 @@ const exported = files.map((file) => {
 })
 
 const contents = `
+import { API } from '../components/api'
 import {contract} from './helpers'
 import {
  ${
@@ -21,7 +22,7 @@ import {
   }
 } from '${typesPath}'
 
-export default (api, network: string) => ({
+export default (api: API, network: string) => ({
   ${exported.join(',\n  ')}
 })`
 

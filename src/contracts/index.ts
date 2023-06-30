@@ -1,4 +1,5 @@
 
+import { API } from '../components/api'
 import {contract} from './helpers'
 import {
  BatchOperation,
@@ -22,7 +23,7 @@ TropixRouter,
 TropixWalletETH
 } from '/home/highlander/projects/oken-waas-sdk-js/oken-types'
 
-export default (api, network: string) => ({
+export default (api: API, network: string) => ({
   batchOperation: ({ address }: { address: string }): BatchOperation => contract('BatchOperation', api, network, address),
   controlledToken: ({ address }: { address: string }): ControlledToken => contract('ControlledToken', api, network, address),
   custody: ({ address }: { address: string }): Custody => contract('Custody', api, network, address),
