@@ -19,6 +19,11 @@ export type Config = {
 
 export default {
   connect: ({ endpoint, network, okenClientId, privateKey, signer = okenSigner, alchemyKey }: Config) => {
+    if (!endpoint) throw Error('Missing endpoint')
+    if (!network) throw Error('Missing network')
+    if (!okenClientId) throw Error('Missing okenClientId')
+    if (!privateKey) throw Error('Missing privateKey')
+
     let alchemyConfig
 
     if (alchemyKey) alchemyConfig = { alchemyKey, network }
