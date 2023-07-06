@@ -19,6 +19,7 @@
     "oken",
     "waas"
   ],
+  "files": ["dist"],
   "types": "./dist/index.d.ts",
   "author": "OnePercent",
   "license": "ISC",
