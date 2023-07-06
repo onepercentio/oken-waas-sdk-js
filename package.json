@@ -1,6 +1,6 @@
 {
   "name": "oken-waas",
-  "version": "1.10.3",
+  "version": "1.10.4",
   "description": "Oken Wallet as a Service SDK",
   "main": "dist/index.js",
   "scripts": {
@@ -19,7 +19,9 @@
     "oken",
     "waas"
   ],
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "types": "./dist/index.d.ts",
   "author": "OnePercent",
   "license": "ISC",
