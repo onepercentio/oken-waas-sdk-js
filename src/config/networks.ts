@@ -21,6 +21,7 @@ export type Networks = {
   POLYGON: {
     MUMBAI: string
     MAINNET: string
+    LOCAL: string
   }
 };
 
@@ -38,8 +39,9 @@ const networks: Networks = {
   },
   POLYGON: {
     MUMBAI: 'mumbai',
-    MAINNET: 'polygon'
-  }
+    MAINNET: 'polygon',
+    LOCAL: 'local'
+  },
 }
 
 
