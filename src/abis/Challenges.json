@@ -173,7 +173,14 @@
   },
   {
     "anonymous": false,
-    "inputs": [],
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      }
+    ],
     "name": "ReceiptAdded",
     "type": "event"
   },
@@ -415,11 +422,6 @@
   },
   {
     "inputs": [
-      {
-        "internalType": "uint128",
-        "name": "_index",
-        "type": "uint128"
-      },
       {
         "internalType": "uint64",
         "name": "_supply",
