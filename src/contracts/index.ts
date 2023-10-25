@@ -3,6 +3,7 @@ import { API } from '../components/api'
 import {contract} from './helpers'
 import {
  BatchOperation,
+Challenges,
 ControlledToken,
 Custody,
 ERC20Payout,
@@ -21,10 +22,11 @@ RarumToken,
 TalentContracts,
 TropixRouter,
 TropixWalletETH
-} from '/Users/fredmarques/Professional/OnePercent/oken-waas-sdk-js/oken-types'
+} from '/home/highlander/projects/sdk-waas/oken-types'
 
 export default (api: API, network: string) => ({
   batchOperation: ({ address }: { address: string }): BatchOperation => contract('BatchOperation', api, network, address),
+  challenges: ({ address }: { address: string }): Challenges => contract('Challenges', api, network, address),
   controlledToken: ({ address }: { address: string }): ControlledToken => contract('ControlledToken', api, network, address),
   custody: ({ address }: { address: string }): Custody => contract('Custody', api, network, address),
   eRC20Payout: ({ address }: { address: string }): ERC20Payout => contract('ERC20Payout', api, network, address),

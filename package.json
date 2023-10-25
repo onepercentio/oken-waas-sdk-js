@@ -1,6 +1,6 @@
 {
   "name": "oken-waas",
-  "version": "1.10.5",
+  "version": "1.10.7",
   "description": "Oken Wallet as a Service SDK",
   "main": "dist/index.js",
   "scripts": {
@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/onepercentio/oken-waas-sdk-js#readme",
   "dependencies": {
+    "@0x/protocol-utils": "^11.24.1",
     "axios": "^1.4.0",
     "axios-error": "^1.0.4",
     "ethers": "^6.6.2",
