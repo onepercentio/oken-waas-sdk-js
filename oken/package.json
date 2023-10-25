@@ -37,5 +37,8 @@
   },
   "dependencies": {
     "lodash": "^4.17.15"
+  },
+  "volta": {
+    "node": "18.18.2"
   }
 }
