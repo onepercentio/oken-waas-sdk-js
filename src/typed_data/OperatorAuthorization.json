@@ -1,0 +1,27 @@
+{
+  "typeName": "OperatorAuthorization",
+  "domainName": "GenericTypedMessage",
+  "domainVersion": "1",
+  "dataStructure": [
+    {
+      "type": "address",
+      "name": "owner"
+    },
+    {
+      "type": "address",
+      "name": "operator"
+    },
+    {
+      "type": "bool",
+      "name": "approved"
+    },
+    {
+      "type": "uint256",
+      "name": "deadline"
+    },
+    {
+      "type": "bytes32",
+      "name": "authorization"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "typeName": "TransferAuthorization",
+  "domainName": "GenericTypedMessage",
+  "domainVersion": "1",
+  "dataStructure": [
+    {
+      "type": "address",
+      "name": "signer"
+    },
+    {
+      "type": "address",
+      "name": "to"
+    },
+    {
+      "type": "uint256[]",
+      "name": "ids"
+    },
+    {
+      "type": "uint256[]",
+      "name": "amounts"
+    },
+    {
+      "type": "uint256",
+      "name": "deadline"
+    },
+    {
+      "type": "bytes32",
+      "name": "authorization"
+    }
+  ]
+}
