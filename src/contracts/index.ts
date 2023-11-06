@@ -22,7 +22,7 @@ RarumToken,
 TalentContracts,
 TropixRouter,
 TropixWalletETH
-} from '/Users/fredmarques/Professional/OnePercent/oken-waas-sdk-js/oken-types'
+} from '/home/highlander/projects/sdk-waas/oken-types'
 
 export default (api: API, network: string) => ({
   batchOperation: ({ address }: { address: string }): BatchOperation => contract('BatchOperation', api, network, address),
