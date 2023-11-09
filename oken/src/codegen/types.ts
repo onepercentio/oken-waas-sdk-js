@@ -15,7 +15,7 @@ export function codegenOutputTypes(outputs: Array<AbiOutputParameter>): string {
     return codegenOutputType(outputs[0].type)
   } else {
     // NOTE: using object here, instead of array is intentional as this is what truffle returns in fact. This sometimes makes a difference (example: exploding)
-    const defs = outputs.map((item, index) => `${item.name || `arg${index}`}: ${codegenOutputType(item.type)}`).join(', ') + ', '
+    const defs = outputs.map((item, index) => `${item.name || `${index}`}: ${codegenOutputType(item.type)}`).join(', ') + ', '
     return (`{${defs}}`)
   }
 }
