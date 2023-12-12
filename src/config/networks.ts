@@ -22,6 +22,10 @@ export type Networks = {
     MUMBAI: string
     MAINNET: string
     LOCAL: string
+  },
+  MOONBEAM: {
+    MOONBASE: string
+    MAINNET: string
   }
 };
 
@@ -42,6 +46,10 @@ const networks: Networks = {
     MAINNET: 'polygon',
     LOCAL: 'local'
   },
+  MOONBEAM: {
+    MOONBASE: 'moonbase',
+    MAINNET: 'moonbeam'
+  }
 }
 
 
