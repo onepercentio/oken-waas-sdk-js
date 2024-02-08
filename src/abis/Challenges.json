@@ -1091,6 +1091,29 @@
     "type": "function"
   },
   {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint64",
+        "name": "_supply",
+        "type": "uint64"
+      },
+      {
+        "internalType": "uint64",
+        "name": "_expiry",
+        "type": "uint64"
+      }
+    ],
+    "name": "partialUpdateRecipe",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "inputs": [],
     "name": "pause",
     "outputs": [],
