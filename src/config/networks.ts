@@ -1,27 +1,32 @@
 export const alchemyNetworkMap =  {
   mainnet: 'homestead',
-  goerli: 'goerli',
-  rinkeby: 'rinkeby',
+  sepolia: 'sepolia',
   polygon: 'matic',
+  amoy: 'amoy',
+  // @deprecated
+  goerli: 'goerli',
   mumbai: 'maticmum',
+  kovan: 'kovan',
 }
 
 export type Networks = {
   ETHEREUM: {
-    KOVAN: string
-    GOERLI: string
-    ROPSTEN: string
-    RINKEBY: string
     MAINNET: string
+    SEPOLIA: string
+    // @deprecated
+    GOERLI: string
+    KOVAN: string
   },
   CELO: {
     ALFAJORES: string
     FORNO: string
   },
   POLYGON: {
-    MUMBAI: string
+    AMOY: string
     MAINNET: string
     LOCAL: string
+    // @deprecated
+    MUMBAI: string
   },
   MOONBEAM: {
     MOONBASE: string
@@ -31,10 +36,9 @@ export type Networks = {
 
 const networks: Networks = {
   ETHEREUM: {
+    SEPOLIA: 'sepolia',
     KOVAN: 'kovan',
     GOERLI: 'goerli',
-    ROPSTEN: 'ropsten',
-    RINKEBY: 'rinkeby',
     MAINNET: 'mainnet'
   },
   CELO: {
@@ -42,6 +46,7 @@ const networks: Networks = {
     FORNO: 'celo'
   },
   POLYGON: {
+    AMOY: 'amoy',
     MUMBAI: 'mumbai',
     MAINNET: 'polygon',
     LOCAL: 'local'
