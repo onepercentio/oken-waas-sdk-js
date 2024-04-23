@@ -20,6 +20,7 @@ RarumNFTAuction,
 RarumSales,
 RarumToken,
 TalentContracts,
+TokenFactory,
 TropixRouter,
 TropixWalletETH
 } from '/home/highlander/projects/sdk-waas/oken-types'
@@ -43,6 +44,7 @@ export default (api: API, network: string) => ({
   rarumSales: ({ address }: { address: string }): RarumSales => contract('RarumSales', api, network, address),
   rarumToken: ({ address }: { address: string }): RarumToken => contract('RarumToken', api, network, address),
   talentContracts: ({ address }: { address: string }): TalentContracts => contract('TalentContracts', api, network, address),
+  tokenFactory: ({ address }: { address: string }): TokenFactory => contract('TokenFactory', api, network, address),
   tropixRouter: ({ address }: { address: string }): TropixRouter => contract('TropixRouter', api, network, address),
   tropixWalletETH: ({ address }: { address: string }): TropixWalletETH => contract('TropixWalletETH', api, network, address)
 })
