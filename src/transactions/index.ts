@@ -20,6 +20,8 @@ export type Transaction =
   checks: number
   confirmations?: number
   lastCheck?: string
+  signerType?: 'VAULT' | 'SMART_ACCOUNT'
+  from?: string
   events: any[]
   links?: {
     [key: string]: string

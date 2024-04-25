@@ -31,8 +31,23 @@ export type SignedTypedMessage = {
 
 export default (api, network: string) => {
   return {
-    create: (referenceId: string): Promise<CreateWalletResponse> => api.post('/wallets', { referenceId }),
-    get: (referenceId: string): Promise<WalletResponse> => referenceId ?
+    /**
+     * @param referenceId Your reference id for this user
+     * @param type The signer type, can be 'VAULT' or 'SMART_ACCOUNT'
+     * @param network If the signer type is 'SMART_ACCOUNT', you can specify the network. For now, only polygon * is supported
+     * @returns {Promise<CreateWalletResponse>}
+     */
+    create: (referenceId: string, signerType?: 'VAULT' | 'SMART_ACCOUNT', network?: 'polygon'): Promise<CreateWalletResponse> => {
+      if (!signerType || signerType === 'VAULT') return api.post('/wallets', { referenceId, type: signerType })
+      return api.post('/wallets', { referenceId, type: signerType, network })
+    },
+    createVaultAccount: (referenceId: string): Promise<CreateWalletResponse> => {
+      return api.post('/wallets', { referenceId, type: 'VAULT' })
+    },
+    createSmartAccount: (referenceId: string, network: 'polygon'): Promise<CreateWalletResponse> => {
+      return api.post('/wallets', { referenceId, type: 'SMART_ACCOUNT', network })
+    },
+    get: (referenceId?: string): Promise<WalletResponse> => referenceId ?
       (api.get(`/wallets/${referenceId}`)) :
       (api.get('/wallets')),
     signTypedMessage: (typedData: TypedMessage, message: any, signerWallet: string, contractAddress: string): Promise<SignedTypedMessage> => {

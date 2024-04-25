@@ -1,4 +1,4 @@
-import wallet from './src/wallets'
+import wallets from './src/wallets'
 import contracts from './src/contracts'
 import transactions from './src/transactions'
 import endpoints from './src/config/endpoints'
@@ -31,7 +31,7 @@ export default {
     const api = API(endpoint, signer(okenClientId, privateKey), alchemyConfig)
 
     return {
-      wallets: wallet(api, network),
+      wallets: wallets(api, network),
       contracts: contracts(api, network),
       transactions: transactions(api),
       errors: errors
