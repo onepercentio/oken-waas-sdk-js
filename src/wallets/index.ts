@@ -22,7 +22,7 @@ export type TypedMessage = {
   domainName: string,
   domainVersion: string,
   dataStructure?: DataStructureItem[]
-  types: Record<string, TypedDataField[]>
+  types?: Record<string, TypedDataField[]>
 }
 
 export type SignedTypedMessage = {
