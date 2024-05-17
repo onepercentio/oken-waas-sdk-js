@@ -1,3 +1,5 @@
+import { TypedDataField } from "ethers"
+
 export type CreateWalletResponse = {
   referenceId: string
   address: string
@@ -19,7 +21,8 @@ export type TypedMessage = {
   typeName: string,
   domainName: string,
   domainVersion: string,
-  dataStructure: DataStructureItem[]
+  dataStructure?: DataStructureItem[]
+  types: Record<string, TypedDataField[]>
 }
 
 export type SignedTypedMessage = {
