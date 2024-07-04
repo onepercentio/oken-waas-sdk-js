@@ -25,6 +25,7 @@ export type Networks = {
     AMOY: string
     MAINNET: string
     LOCAL: string
+    DOCKER: string
     // @deprecated
     MUMBAI: string
   },
@@ -49,7 +50,8 @@ const networks: Networks = {
     AMOY: 'amoy',
     MUMBAI: 'mumbai',
     MAINNET: 'polygon',
-    LOCAL: 'local'
+    LOCAL: 'local',
+    DOCKER: 'local'
   },
   MOONBEAM: {
     MOONBASE: 'moonbase',
