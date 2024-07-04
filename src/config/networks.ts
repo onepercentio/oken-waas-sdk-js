@@ -51,7 +51,7 @@ const networks: Networks = {
     MUMBAI: 'mumbai',
     MAINNET: 'polygon',
     LOCAL: 'local',
-    DOCKER: 'local'
+    DOCKER: 'docker'
   },
   MOONBEAM: {
     MOONBASE: 'moonbase',
