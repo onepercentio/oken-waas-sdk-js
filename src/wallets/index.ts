@@ -1,5 +1,4 @@
 import { TypedDataField } from "ethers"
-import { Networks } from "../config/networks"
 
 export type CreateWalletResponse = {
   referenceId: string
@@ -33,8 +32,6 @@ export type SignedTypedMessage = {
   [key: string]: unknown
 }
 
-type SupportedSmartAccountsNetworks = Pick<Networks, 'ETHEREUM' | 'POLYGON'>
-
 export default (api, network: string) => {
   return {
     /**
@@ -43,14 +40,14 @@ export default (api, network: string) => {
      * @param network If the signer type is 'SMART_ACCOUNT', you can specify the network
      * @returns {Promise<CreateWalletResponse>}
      */
-    create: (referenceId: string, signerType?: 'VAULT' | 'SMART_ACCOUNT', network?: SupportedSmartAccountsNetworks): Promise<CreateWalletResponse> => {
+    create: (referenceId: string, signerType?: 'VAULT' | 'SMART_ACCOUNT', network?: string): Promise<CreateWalletResponse> => {
       if (!signerType || signerType === 'VAULT') return api.post('/wallets', { referenceId, type: signerType })
       return api.post('/wallets', { referenceId, type: signerType, network })
     },
     createVaultAccount: (referenceId: string): Promise<CreateWalletResponse> => {
       return api.post('/wallets', { referenceId, type: 'VAULT' })
     },
-    createSmartAccount: (referenceId: string, network: SupportedSmartAccountsNetworks): Promise<CreateWalletResponse> => {
+    createSmartAccount: (referenceId: string, network: string): Promise<CreateWalletResponse> => {
       return api.post('/wallets', { referenceId, type: 'SMART_ACCOUNT', network })
     },
     get: (referenceId?: string): Promise<WalletResponse> => referenceId ?
