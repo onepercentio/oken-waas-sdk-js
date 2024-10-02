@@ -1,0 +1,1060 @@
+[
+  {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "previousAdmin",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "newAdmin",
+        "type": "address"
+      }
+    ],
+    "name": "AdminChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "beacon",
+        "type": "address"
+      }
+    ],
+    "name": "BeaconUpgraded",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "orderIndex",
+        "type": "uint256"
+      }
+    ],
+    "name": "Executed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint8",
+        "name": "version",
+        "type": "uint8"
+      }
+    ],
+    "name": "Initialized",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "index",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "enum LibNFTOrder.TradeDirection",
+                "name": "direction",
+                "type": "uint8"
+              },
+              {
+                "internalType": "address",
+                "name": "maker",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "taker",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "expiry",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "nonce",
+                "type": "uint256"
+              },
+              {
+                "internalType": "contract IERC20Token",
+                "name": "erc20Token",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "erc20TokenAmount",
+                "type": "uint256"
+              },
+              {
+                "components": [
+                  {
+                    "internalType": "address",
+                    "name": "recipient",
+                    "type": "address"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "bytes",
+                    "name": "feeData",
+                    "type": "bytes"
+                  }
+                ],
+                "internalType": "struct LibNFTOrder.Fee[]",
+                "name": "fees",
+                "type": "tuple[]"
+              },
+              {
+                "internalType": "contract IERC721Token",
+                "name": "erc721Token",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "erc721TokenId",
+                "type": "uint256"
+              },
+              {
+                "components": [
+                  {
+                    "internalType": "contract IPropertyValidator",
+                    "name": "propertyValidator",
+                    "type": "address"
+                  },
+                  {
+                    "internalType": "bytes",
+                    "name": "propertyData",
+                    "type": "bytes"
+                  }
+                ],
+                "internalType": "struct LibNFTOrder.Property[]",
+                "name": "erc721TokenProperties",
+                "type": "tuple[]"
+              }
+            ],
+            "internalType": "struct LibNFTOrder.ERC721Order",
+            "name": "order",
+            "type": "tuple"
+          },
+          {
+            "internalType": "uint256",
+            "name": "totalFees",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "buyer",
+            "type": "address"
+          },
+          {
+            "internalType": "bool",
+            "name": "active",
+            "type": "bool"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct RarumEscrow.Escrow",
+        "name": "order",
+        "type": "tuple"
+      }
+    ],
+    "name": "NewEscrow",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "previousAdminRole",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "newAdminRole",
+        "type": "bytes32"
+      }
+    ],
+    "name": "RoleAdminChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      }
+    ],
+    "name": "RoleGranted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      }
+    ],
+    "name": "RoleRevoked",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "orderIndex",
+        "type": "uint256"
+      }
+    ],
+    "name": "RolledBack",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "implementation",
+        "type": "address"
+      }
+    ],
+    "name": "Upgraded",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "ADMIN_ROLE",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "DEFAULT_ADMIN_ROLE",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "OPERATOR_ROLE",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "UPGRADER_ROLE",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "enum LibNFTOrder.TradeDirection",
+            "name": "direction",
+            "type": "uint8"
+          },
+          {
+            "internalType": "address",
+            "name": "maker",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "taker",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "expiry",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "nonce",
+            "type": "uint256"
+          },
+          {
+            "internalType": "contract IERC20Token",
+            "name": "erc20Token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "erc20TokenAmount",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "recipient",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+              },
+              {
+                "internalType": "bytes",
+                "name": "feeData",
+                "type": "bytes"
+              }
+            ],
+            "internalType": "struct LibNFTOrder.Fee[]",
+            "name": "fees",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "contract IERC721Token",
+            "name": "erc721Token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "erc721TokenId",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "contract IPropertyValidator",
+                "name": "propertyValidator",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes",
+                "name": "propertyData",
+                "type": "bytes"
+              }
+            ],
+            "internalType": "struct LibNFTOrder.Property[]",
+            "name": "erc721TokenProperties",
+            "type": "tuple[]"
+          }
+        ],
+        "internalType": "struct LibNFTOrder.ERC721Order",
+        "name": "_order",
+        "type": "tuple"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_totalFees",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "_erc721Recipient",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_erc20Recipient",
+        "type": "address"
+      }
+    ],
+    "name": "_transferTokens",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "allowedERC721",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "allowedPaymentTokens",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_index",
+        "type": "uint256"
+      }
+    ],
+    "name": "execute",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_index",
+        "type": "uint256"
+      }
+    ],
+    "name": "getEscrow",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "index",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "enum LibNFTOrder.TradeDirection",
+                "name": "direction",
+                "type": "uint8"
+              },
+              {
+                "internalType": "address",
+                "name": "maker",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "taker",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "expiry",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "nonce",
+                "type": "uint256"
+              },
+              {
+                "internalType": "contract IERC20Token",
+                "name": "erc20Token",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "erc20TokenAmount",
+                "type": "uint256"
+              },
+              {
+                "components": [
+                  {
+                    "internalType": "address",
+                    "name": "recipient",
+                    "type": "address"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "bytes",
+                    "name": "feeData",
+                    "type": "bytes"
+                  }
+                ],
+                "internalType": "struct LibNFTOrder.Fee[]",
+                "name": "fees",
+                "type": "tuple[]"
+              },
+              {
+                "internalType": "contract IERC721Token",
+                "name": "erc721Token",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "erc721TokenId",
+                "type": "uint256"
+              },
+              {
+                "components": [
+                  {
+                    "internalType": "contract IPropertyValidator",
+                    "name": "propertyValidator",
+                    "type": "address"
+                  },
+                  {
+                    "internalType": "bytes",
+                    "name": "propertyData",
+                    "type": "bytes"
+                  }
+                ],
+                "internalType": "struct LibNFTOrder.Property[]",
+                "name": "erc721TokenProperties",
+                "type": "tuple[]"
+              }
+            ],
+            "internalType": "struct LibNFTOrder.ERC721Order",
+            "name": "order",
+            "type": "tuple"
+          },
+          {
+            "internalType": "uint256",
+            "name": "totalFees",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "buyer",
+            "type": "address"
+          },
+          {
+            "internalType": "bool",
+            "name": "active",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct RarumEscrow.Escrow",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getRoleAdmin",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "uint256",
+        "name": "index",
+        "type": "uint256"
+      }
+    ],
+    "name": "getRoleMember",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getRoleMemberCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "grantRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "hasRole",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract IERC721OrdersFeature",
+        "name": "_zeroExExchange",
+        "type": "address"
+      },
+      {
+        "internalType": "address[]",
+        "name": "_allowedPaymentTokens",
+        "type": "address[]"
+      },
+      {
+        "internalType": "address[]",
+        "name": "_allowedERC721",
+        "type": "address[]"
+      },
+      {
+        "internalType": "address",
+        "name": "_defaultAdmin",
+        "type": "address"
+      }
+    ],
+    "name": "initialize",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "enum LibNFTOrder.TradeDirection",
+            "name": "direction",
+            "type": "uint8"
+          },
+          {
+            "internalType": "address",
+            "name": "maker",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "taker",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "expiry",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "nonce",
+            "type": "uint256"
+          },
+          {
+            "internalType": "contract IERC20Token",
+            "name": "erc20Token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "erc20TokenAmount",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "recipient",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+              },
+              {
+                "internalType": "bytes",
+                "name": "feeData",
+                "type": "bytes"
+              }
+            ],
+            "internalType": "struct LibNFTOrder.Fee[]",
+            "name": "fees",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "contract IERC721Token",
+            "name": "erc721Token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "erc721TokenId",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "contract IPropertyValidator",
+                "name": "propertyValidator",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes",
+                "name": "propertyData",
+                "type": "bytes"
+              }
+            ],
+            "internalType": "struct LibNFTOrder.Property[]",
+            "name": "erc721TokenProperties",
+            "type": "tuple[]"
+          }
+        ],
+        "internalType": "struct LibNFTOrder.ERC721Order",
+        "name": "_sellOrder",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "enum LibSignature.SignatureType",
+            "name": "signatureType",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint8",
+            "name": "v",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "r",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "s",
+            "type": "bytes32"
+          }
+        ],
+        "internalType": "struct LibSignature.Signature",
+        "name": "_signature",
+        "type": "tuple"
+      }
+    ],
+    "name": "lock",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "proxiableUUID",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "renounceRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "revokeRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes4",
+        "name": "interfaceId",
+        "type": "bytes4"
+      }
+    ],
+    "name": "supportsInterface",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_token",
+        "type": "address"
+      },
+      {
+        "internalType": "bool",
+        "name": "_allowed",
+        "type": "bool"
+      }
+    ],
+    "name": "toggleERC721",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_token",
+        "type": "address"
+      },
+      {
+        "internalType": "bool",
+        "name": "_allowed",
+        "type": "bool"
+      }
+    ],
+    "name": "togglePaymentToken",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_index",
+        "type": "uint256"
+      }
+    ],
+    "name": "undo",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newImplementation",
+        "type": "address"
+      }
+    ],
+    "name": "upgradeTo",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newImplementation",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes",
+        "name": "data",
+        "type": "bytes"
+      }
+    ],
+    "name": "upgradeToAndCall",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "zeroExExchange",
+    "outputs": [
+      {
+        "internalType": "contract IERC721OrdersFeature",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
