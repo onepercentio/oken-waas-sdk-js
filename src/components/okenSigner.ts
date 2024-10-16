@@ -2,7 +2,9 @@ import crypto from 'crypto'
 import jwt from 'jsonwebtoken'
 
 export type Message = {
-  [key: string]: unknown,
+  [key: string]: unknown
+  signerType?: 'VAULT' | 'SMART_ACCOUNT',
+  from?: string
 }
 
 export type SignedMessage = Message & {
@@ -10,12 +12,26 @@ export type SignedMessage = Message & {
   signature: string
 }
 
-export default (okenClientId: string, privateKey: string) => ({
+export type SignerOptions = {
+  signerType: 'VAULT' | 'SMART_ACCOUNT',
+  from: string
+}
+
+export default (okenClientId: string, privateKey: string, options?: SignerOptions) => ({
   signJWT: () => jwt.sign({ 'oken-client-id': okenClientId }, privateKey, { algorithm: 'RS256', expiresIn: '21600s' }),
   signMsg: (payload: Message): SignedMessage => {
     const payloadWithTimestamp = {
       ...payload,
       timestamp: new Date().toISOString()
+    }
+
+    if (options?.signerType === 'SMART_ACCOUNT') {
+      if (!options.from) {
+        throw new Error('\'from\' address if required for SMART_ACCOUNT signer')
+      }
+
+      payloadWithTimestamp.signerType = options.signerType
+      payloadWithTimestamp.from = options.from
     }
 
     const msg = JSON.stringify(payloadWithTimestamp)

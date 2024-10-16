@@ -50,7 +50,6 @@ export default (endpoint, signer, alchemyConfig?: AlchemyConfig): API => {
       }
     },
     get: async (route: string, payload: any) => {
-
       try {
         const { data } = await api.get(
           route,

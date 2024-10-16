@@ -13,8 +13,9 @@ export type Networks = {
   ETHEREUM: {
     MAINNET: string
     SEPOLIA: string
-    // @deprecated
+    /** @deprecated */
     GOERLI: string
+    /** @deprecated */
     KOVAN: string
   },
   CELO: {
@@ -26,7 +27,7 @@ export type Networks = {
     MAINNET: string
     LOCAL: string
     DOCKER: string
-    // @deprecated
+    /** @deprecated */
     MUMBAI: string
   },
   MOONBEAM: {
