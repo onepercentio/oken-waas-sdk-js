@@ -27,7 +27,7 @@ TalentContracts,
 TokenFactory,
 TropixRouter,
 TropixWalletETH
-} from '/home/highlander/projects/sdk-waas/oken-types'
+} from '/Users/highlander/one/sdk/oken-types'
 
 export default (api: API, network: string) => ({
   batchOperation: ({ address }: { address: string }): BatchOperation => contract('BatchOperation', api, network, address),
