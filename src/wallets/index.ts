@@ -46,7 +46,7 @@ export default (api, network: string) => {
     },
     batchCreate: (referenceIds: string[], signerType?: 'VAULT' | 'SMART_ACCOUNT', network?: string): Promise<CreateWalletResponse[]> => {
       if (!signerType || signerType === 'VAULT') return api.post('/wallets/batch', { referenceIds, type: signerType })
-      return api.post('/wallets', { referenceIds, type: signerType, network })
+      return api.post('/wallets/batch', { referenceIds, type: signerType, network })
     },
     createVaultAccount: (referenceId: string): Promise<CreateWalletResponse> => {
       return api.post('/wallets', { referenceId, type: 'VAULT' })
