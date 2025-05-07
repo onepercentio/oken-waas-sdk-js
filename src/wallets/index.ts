@@ -25,10 +25,13 @@ export type TypedMessage = {
   types?: Record<string, TypedDataField[]>
 }
 
-export type SignedTypedMessage = {
+export type SignedMessage = {
   v: 27 | 28,
   r: string,
   s: string,
+}
+
+export type SignedTypedMessage = SignedMessage & {
   [key: string]: unknown
 }
 
@@ -66,6 +69,15 @@ export default (api, network: string) => {
         signerWallet
       }
       return api.post('/wallets/typed-message', payload)
+    },
+    signMessage: (message: any, signerWallet: string): Promise<SignedMessage> => {
+      const payload = {
+        message, 
+        network,
+        signerWallet
+      }
+
+      return api.post('/wallets/sign-message', payload)
     }
   }
 }
